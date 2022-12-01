@@ -1,0 +1,118 @@
+.paint-body{
+    border-radius: 0px;
+    width: 1474px;
+    min-height: 695px;
+    box-shadow: 0 8px 50px -7px black;
+    background: #ffffff;
+}
+.tool-bar{
+    width: 1474px;
+    height: 150px;
+    border-radius: 0px;
+    background: #e8e9e9;
+}
+.shapes{
+    position: relative;
+    width: 1474px;
+    height:104px;
+    top: 10px;
+    background: #f5f3f3;
+    border-radius: 0px;
+}
+ /* //////////////////// */
+.dropbtn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 7px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+  }
+  .dropdown {
+    position: relative;
+    left: 10px;
+    bottom: 1px;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    top: 30px;
+    border-radius: 5px; 
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: rgb(5, 3, 3);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {background-color: #e4ebe4}
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown:hover .dropbtn {
+    background-color: #e4ebe4;
+  }
+   /* //////////////////// */
+  .saveimg {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      padding: 6px;
+      font-size: 15px;
+      left: 15px;
+      cursor: pointer;
+      width: 15px; 
+      height: 15px;
+      border-radius: 7px;
+  }
+  .saveimg:hover {
+      background: #e4ebe4;
+  }
+  .saveimg {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      top: 5px;
+      display: inline-block;
+    }
+     /* //////////////////// */
+    .undoimg{
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 6px;
+        font-size: 15px;
+        left: 20px;
+        cursor: pointer;
+        width: 20px; 
+        height: 20px;
+        border-radius: 7px;
+        position: relative;
+        top: 5px;
+        display: inline-block;
+    }
+    .undoimg:hover {
+        background: #e4ebe4;
+    }
+    /* //////////////////// */
+    .redoimg{
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        left: 25px;
+        width:20px; 
+        height:20px;
+        border-radius: 7px;
+        position: relative;
+        top: 5px;
+        display: inline-block;
+    }
+    .redoimg:hover {
+        background: #e4ebe4;
+    }
