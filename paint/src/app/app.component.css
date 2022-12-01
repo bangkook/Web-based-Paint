@@ -13,11 +13,38 @@
 }
 .shapes{
     position: relative;
-    width: 1474px;
-    height:104px;
+    width: 150px;
+    height:50px;
     top: 10px;
-    background: #f5f3f3;
-    border-radius: 0px;
+    background: #f5eded;
+    border-radius: 10px;
+}
+.tools{
+  border-radius: 10px;
+  position: relative;
+  width: 100px;
+  height:50px;
+  bottom: 40px;
+  left: 150px;
+  background: #f1dfdf;
+}
+.colors{
+  border-radius: 10px;
+  position: relative;
+  width: 200px;
+  height:50px;
+  bottom: 90px;
+  left: 250px;
+  background: #c8dff5;
+}
+.image{
+  border-radius: 10px;
+  position: relative;
+  width: 200px;
+  height:50px;
+  bottom: 140px;
+  left: 450px;
+  background: #c8f5f1;
 }
  /* //////////////////// */
 .dropbtn {
