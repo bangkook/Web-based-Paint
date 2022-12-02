@@ -13,7 +13,7 @@
 }
 .shapes{
     position: relative;
-    width: 220px;
+    width: 260px;
     height:63px;
     top: 10px;
     background: #bbedf8;
@@ -27,7 +27,7 @@
   width: 130px;
   height:63px;
   bottom: 53px;
-  left: 220px;
+  left: 275px;
   background: #d4d3ff;
 }
 .colors{
@@ -36,7 +36,7 @@
   width: 260px;
   height:63px;
   bottom: 115px;
-  left: 350px;
+  left: 420px;
   background: #ffffff;
 }
 .image{
@@ -45,7 +45,7 @@
   width: 220px;
   height:63px;
   bottom: 178px;
-  left: 610px;
+  left: 695px;
   background: #f8ddfe;
 }
  /* //////////////////// */
