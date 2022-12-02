@@ -7,44 +7,59 @@
 }
 .tool-bar{
     width: 1474px;
-    height: 100px;
+    height: 110px;
     border-radius: 0px;
     background: #d7d7d7;
 }
 .shapes{
     position: relative;
-    width: 150px;
-    height:50px;
+    width: 220px;
+    height:63px;
     top: 10px;
     background: #bbedf8;
     border-radius: 10px;
+    
 }
+
 .tools{
   border-radius: 10px;
   position: relative;
-  width: 100px;
-  height:50px;
-  bottom: 40px;
-  left: 150px;
+  width: 130px;
+  height:63px;
+  bottom: 53px;
+  left: 220px;
   background: #d4d3ff;
 }
 .colors{
   border-radius: 10px;
   position: relative;
-  width: 200px;
-  height:50px;
-  bottom: 90px;
-  left: 250px;
+  width: 260px;
+  height:63px;
+  bottom: 115px;
+  left: 350px;
   background: #ffffff;
 }
 .image{
   border-radius: 10px;
   position: relative;
-  width: 170px;
-  height:50px;
-  bottom: 140px;
-  left: 450px;
+  width: 220px;
+  height:63px;
+  bottom: 178px;
+  left: 610px;
   background: #f8ddfe;
+}
+ /* //////////////////// */
+ .button {
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 7px;
+    position: relative;
+    display: inline-block;
+}
+.button:hover {
+    background: #b0b0b0;
 }
  /* //////////////////// */
 .dropbtn {
@@ -92,21 +107,17 @@
       padding: 6px;
       font-size: 15px;
       left: 15px;
+      top: 5px;
       cursor: pointer;
-      width: 15px; 
-      height: 15px;
       border-radius: 7px;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
   }
   .saveimg:hover {
       background: #e4ebe4;
   }
-  .saveimg {
-      position: relative;
-      width: 20px;
-      height: 20px;
-      top: 5px;
-      display: inline-block;
-    }
      /* //////////////////// */
     .undoimg{
         background-color: #ffffff;

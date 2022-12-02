@@ -11,5 +11,10 @@ export class AppComponent {
   title = 'paint';
   redo(){console.log("redo")}
   undo(){console.log("undo")}
+  lineSegment(){console.log("lineSegment")}
+  square(){console.log("square")}
+  ellipse(){console.log("ellipse")}
+  triangle(){console.log("triangle")}
+  circle(){console.log("circle")}
   
 }
