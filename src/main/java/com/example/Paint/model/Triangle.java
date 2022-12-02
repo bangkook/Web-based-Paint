@@ -1,37 +1,28 @@
 package com.example.Paint.model;
 
 public class Triangle extends Shape {
-    private Point a;
-    private Point b;
-    private Point c;
+    float width, height;
 
-    public Triangle(float aX, float aY, float bX, float bY, float cX, float cY) {
-        this.a = new Point(aX, aY);
-        this.b = new Point(bX, bY);
-        this.c = new Point(cX, cY);
+    public Triangle(float x, float y, float width, float height) {
+        this.startPoint = new Point(x, y);
+        this.width = width;
+        this.height = height;
+        this.type = ShapeType.TRIANGLE;
     }
 
-    public Point getA() {
-        return a;
+    public float getWidth() {
+        return width;
     }
 
-    public void setA(Point a) {
-        this.a = a;
+    public void setWidth(float width) {
+        this.width = width;
     }
 
-    public Point getB() {
-        return b;
+    public float getHeight() {
+        return height;
     }
 
-    public void setB(Point b) {
-        this.b = b;
-    }
-
-    public Point getC() {
-        return c;
-    }
-
-    public void setC(Point c) {
-        this.c = c;
+    public void setHeight(float height) {
+        this.height = height;
     }
 }
