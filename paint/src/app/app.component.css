@@ -1,5 +1,5 @@
 .paint-body{
-    border-radius: 0px;
+    border-radius: 10px;
     width: 1474px;
     min-height: 695px;
     box-shadow: 0 8px 50px -7px black;
@@ -7,16 +7,16 @@
 }
 .tool-bar{
     width: 1474px;
-    height: 150px;
+    height: 100px;
     border-radius: 0px;
-    background: #e8e9e9;
+    background: #d7d7d7;
 }
 .shapes{
     position: relative;
     width: 150px;
     height:50px;
     top: 10px;
-    background: #f5eded;
+    background: #bbedf8;
     border-radius: 10px;
 }
 .tools{
@@ -26,7 +26,7 @@
   height:50px;
   bottom: 40px;
   left: 150px;
-  background: #f1dfdf;
+  background: #d4d3ff;
 }
 .colors{
   border-radius: 10px;
@@ -35,16 +35,16 @@
   height:50px;
   bottom: 90px;
   left: 250px;
-  background: #c8dff5;
+  background: #ffffff;
 }
 .image{
   border-radius: 10px;
   position: relative;
-  width: 200px;
+  width: 170px;
   height:50px;
   bottom: 140px;
   left: 450px;
-  background: #c8f5f1;
+  background: #f8ddfe;
 }
  /* //////////////////// */
 .dropbtn {
