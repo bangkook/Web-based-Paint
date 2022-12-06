@@ -2,9 +2,12 @@ package com.example.Paint.dao;
 
 import com.example.Paint.Service.ShapePrototype;
 import com.example.Paint.model.Shape;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@Component
 
 public class FakeShapeDataAccessService implements ShapeDAO {
     List<Shape> DB = new ArrayList<>();
