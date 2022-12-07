@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormArray } from '@angular/forms';
+import { PaintComponent } from './components/paint/paint.component';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,5 @@ import { UntypedFormArray } from '@angular/forms';
 })
 export class AppComponent {
   title = 'paint';
-  redo(){console.log("redo")}
-  undo(){console.log("undo")}
-  lineSegment(){console.log("lineSegment")}
-  square(){console.log("square")}
-  ellipse(){console.log("ellipse")}
-  triangle(){console.log("triangle")}
-  circle(){console.log("circle")}
   
 }

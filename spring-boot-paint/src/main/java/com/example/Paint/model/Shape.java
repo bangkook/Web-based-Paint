@@ -5,8 +5,8 @@ import java.awt.*;
 public abstract class Shape implements Cloneable {
     Color color;
     Point startPoint;
-    private int id;
-    public ShapeType type;
+    int id;
+    public String type;
 
     public Object clone() {
         try {

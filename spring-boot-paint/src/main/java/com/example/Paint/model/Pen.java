@@ -6,7 +6,7 @@ public class Pen extends Shape {
 
     public Pen(int x, int y) {
         this.startPoint = new Point(x, y);
-        this.type = ShapeType.PEN;
+        //this.type = ShapeType.PEN;
     }
 
     public boolean addPoints(Point[] points) {

@@ -6,7 +6,7 @@ import com.example.Paint.model.Shape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Map;
 
 @Service
 public class PaintService {
@@ -17,7 +17,7 @@ public class PaintService {
         this.shapeDAO = shapeDAO;
     }
 
-    public List<Shape> getAllShapes() {
+    public Map<Integer, Shape> getAllShapes() {
         return shapeDAO.getAllShapes();
     }
 

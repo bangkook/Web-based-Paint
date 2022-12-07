@@ -8,7 +8,7 @@ public class Ellipse extends Shape {
         startPoint = new Point(startX, startY);
         this.width = width;
         this.height = height;
-        this.type = ShapeType.ELLIPSE;
+        //this.type = ShapeType.ELLIPSE;
     }
 
     /*public Ellipse(float startX, float startY, float widthX, float widthY, float heightX, float heightY) {

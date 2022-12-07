@@ -8,7 +8,7 @@ public class Rectangle extends Shape {
         startPoint = new Point(x, y);
         this.height = height;
         this.width = width;
-        this.type = ShapeType.RECTANGLE;
+        //this.type = ShapeType.RECTANGLE;
     }
 
     public float getHeight() {

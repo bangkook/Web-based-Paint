@@ -1,14 +1,19 @@
 package com.example.Paint.Service;
 
 import com.example.Paint.input.ShapeInput;
-import com.example.Paint.model.*;
+import com.example.Paint.model.Circle;
+import com.example.Paint.model.Shape;
 
 public class ShapeFactory {
 
     public static Shape getShape(ShapeInput shapeInput) {
-        ShapeType shape = shapeInput.type;
+        String shape = shapeInput.type;
+        System.out.println("HERE" + shapeInput.startX);
 
-        if (shape == ShapeType.LINE) {
+        if (shape.equals("circle")) {
+            return new Circle(shapeInput.startX, shapeInput.startY, shapeInput.radius);
+        }
+        /*if (shape == ShapeType.LINE) {
             return new Line(shapeInput.startX, shapeInput.startY, shapeInput.endX, shapeInput.endY);
 
         } else if (shape == ShapeType.CIRCLE) {
@@ -25,7 +30,7 @@ public class ShapeFactory {
 
         } else if (shape == ShapeType.RECTANGLE) {
             return new Rectangle(shapeInput.startX, shapeInput.startY, shapeInput.length, shapeInput.width);
-        }
+        }*/
 
         return null;
     }

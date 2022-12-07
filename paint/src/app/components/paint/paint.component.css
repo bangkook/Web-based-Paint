@@ -1,0 +1,156 @@
+.paint-body{
+    border-radius: 10px;
+    width: 1474px;
+    min-height: 695px;
+    box-shadow: 0 8px 50px -7px black;
+    background: #ffffff;
+}
+.tool-bar{
+    width: 1474px;
+    height: 110px;
+    border-radius: 0px;
+    background: #d7d7d7;
+}
+.shapes{
+    position: relative;
+    width: 260px;
+    height:63px;
+    top: 10px;
+    background: #bbedf8;
+    border-radius: 10px;
+    
+}
+
+.tools{
+  border-radius: 10px;
+  position: relative;
+  width: 130px;
+  height:63px;
+  bottom: 53px;
+  left: 275px;
+  background: #d4d3ff;
+}
+.colors{
+  border-radius: 10px;
+  position: relative;
+  width: 260px;
+  height:63px;
+  bottom: 115px;
+  left: 420px;
+  background: #ffffff;
+}
+.image{
+  border-radius: 10px;
+  position: relative;
+  width: 220px;
+  height:63px;
+  bottom: 178px;
+  left: 695px;
+  background: #f8ddfe;
+}
+ /* //////////////////// */
+ .button {
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 7px;
+    position: relative;
+    display: inline-block;
+}
+.button:hover {
+    background: #b0b0b0;
+}
+ /* //////////////////// */
+.dropbtn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 7px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+  }
+.dropdown {
+position: relative;
+left: 10px;
+bottom: 1px;
+display: inline-block;
+}
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+top: 30px;
+border-radius: 5px; 
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+.dropdown-content a {
+color: rgb(5, 3, 3);
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+.dropdown-content a:hover {background-color: #e4ebe4}
+.dropdown:hover .dropdown-content {
+display: block;
+}
+.dropdown:hover .dropbtn {
+background-color: #e4ebe4;
+}
+/* //////////////////// */
+.saveimg {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    font-size: 15px;
+    left: 15px;
+    top: 5px;
+    cursor: pointer;
+    border-radius: 7px;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+.saveimg:hover {
+    background: #e4ebe4;
+}
+    /* //////////////////// */
+.undoimg{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    font-size: 15px;
+    left: 20px;
+    cursor: pointer;
+    width: 20px; 
+    height: 20px;
+    border-radius: 7px;
+    position: relative;
+    top: 5px;
+    display: inline-block;
+}
+.undoimg:hover {
+    background: #e4ebe4;
+}
+/* //////////////////// */
+.redoimg{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    left: 25px;
+    width:20px; 
+    height:20px;
+    border-radius: 7px;
+    position: relative;
+    top: 5px;
+    display: inline-block;
+}
+.redoimg:hover {
+    background: #e4ebe4;
+}

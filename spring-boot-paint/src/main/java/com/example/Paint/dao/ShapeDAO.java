@@ -2,11 +2,11 @@ package com.example.Paint.dao;
 
 import com.example.Paint.model.Shape;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ShapeDAO {
     //TODO : add id
-    List<Shape> getAllShapes();
+    Map<Integer, Shape> getAllShapes();
 
     Shape addShape(Shape shape);
 

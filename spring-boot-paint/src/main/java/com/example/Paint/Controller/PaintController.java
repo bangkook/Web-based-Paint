@@ -6,11 +6,11 @@ import com.example.Paint.model.Shape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Map;
 
 @RestController
-@CrossOrigin()
-@RequestMapping("/paint")
+@CrossOrigin("http://localhost:4200/")
+//@RequestMapping("/paint")
 public class PaintController {
     @Autowired
     private final PaintService paintService;
@@ -20,13 +20,18 @@ public class PaintController {
     }
 
     @GetMapping("/all")
-    public List<Shape> getAllShapes() {
+    public Map<Integer, Shape> getAllShapes() {
         return this.paintService.getAllShapes();
     }
 
     @PostMapping("/add")
     public Shape addNewShape(@RequestBody ShapeInput shapeInput) {
         return this.paintService.addNewShape(shapeInput);
+    }
+
+    @GetMapping("/copy")
+    public Shape addCopy(int id) {
+        return this.paintService.addCopy(id);
     }
 
     @PutMapping(path = "/update/{shapeId}")

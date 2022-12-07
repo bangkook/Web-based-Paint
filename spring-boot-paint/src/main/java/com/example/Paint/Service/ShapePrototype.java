@@ -1,12 +1,12 @@
 package com.example.Paint.Service;
 
-import com.example.Paint.model.*;
+import com.example.Paint.model.Shape;
 
 public class ShapePrototype {
 
     public static Shape getClone(Shape shape) {
 
-        if (shape.type == ShapeType.LINE) {
+        /*if (shape.type == ShapeType.LINE) {
             return (Line) shape.clone();
 
         } else if (shape.type == ShapeType.CIRCLE) {
@@ -23,7 +23,7 @@ public class ShapePrototype {
 
         } else if (shape.type == ShapeType.RECTANGLE) {
             return (Rectangle) shape.clone();
-        }
+        }*/
 
         return null;
     }

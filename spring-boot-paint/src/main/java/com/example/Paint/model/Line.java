@@ -9,7 +9,7 @@ public class Line extends Shape {
         this.startPoint = new Point(startX, startY);
         endPoint = new Point(endX, endY);
         length = (float) Math.sqrt((endY - startY) * (endY - startY) + (endX - startX) * (endX - startX));
-        this.type = ShapeType.LINE;
+        //this.type = ShapeType.LINE;
     }
 
     /*// draw horizontal line with given length

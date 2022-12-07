@@ -6,7 +6,7 @@ public class Circle extends Shape {
     public Circle(float centreX, float centreY, float radius) {
         startPoint = new Point(centreX, centreY);
         this.radius = radius;
-        this.type = ShapeType.CIRCLE;
+        this.type = "circle";
     }
 
     /*Circle(float centreX, float centreY, float endX, float endY) {

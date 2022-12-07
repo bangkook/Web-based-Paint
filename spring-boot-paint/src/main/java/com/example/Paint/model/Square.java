@@ -6,7 +6,7 @@ public class Square extends Shape {
     public Square(float x, float y, float length) {
         startPoint = new Point(x, y);
         this.length = length;
-        this.type = ShapeType.SQUARE;
+        // this.type = ShapeType.SQUARE;
     }
 
     /*public Square(float x1, float y1, float x2, float y2) {
