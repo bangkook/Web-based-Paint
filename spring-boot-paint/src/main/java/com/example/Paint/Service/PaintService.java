@@ -29,11 +29,13 @@ public class PaintService {
         return shapeDAO.addCopy(id);
     }
 
-    public Shape updateShape(int id, Shape shape) {
-        return shapeDAO.updateShape(id, shape);
+    public Shape updateShape(int id, ShapeData shapeData) {
+        return shapeDAO.updateShape(id, shapeData);
     }
 
     public void deleteShape(int id) {
         shapeDAO.deleteShape(id);
     }
+
+
 }

@@ -36,8 +36,9 @@ public class PaintController {
 
     @PutMapping(path = "/update/{shapeId}")
     public Shape updateShape(@PathVariable("shapeId") int shapeId,
-                             @RequestBody Shape shape) {
-        return this.paintService.updateShape(shapeId, shape);
+                             @RequestBody ShapeData shapeData) {
+
+        return this.paintService.updateShape(shapeId, shapeData);
     }
 
     @DeleteMapping("/delete/{shapeId}")

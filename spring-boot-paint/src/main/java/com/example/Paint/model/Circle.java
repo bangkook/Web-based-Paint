@@ -9,6 +9,10 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
+    public Circle() {
+        super();
+    }
+
     public float getRadius() {
         return radius;
     }

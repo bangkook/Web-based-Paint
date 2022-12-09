@@ -1,5 +1,6 @@
 package com.example.Paint.dao;
 
+import com.example.Paint.input.ShapeData;
 import com.example.Paint.model.Shape;
 
 import java.util.Map;
@@ -12,7 +13,7 @@ public interface ShapeDAO {
 
     Shape addCopy(int id);
 
-    Shape updateShape(int id, Shape shape);
+    Shape updateShape(int id, ShapeData shapeData);
 
     void deleteShape(int id);
 

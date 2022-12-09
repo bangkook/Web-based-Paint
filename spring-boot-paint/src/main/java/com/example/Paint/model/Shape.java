@@ -17,6 +17,9 @@ public abstract class Shape implements Cloneable {
         this.rotation = rotation;
     }
 
+    public Shape() {
+    }
+
     public Object clone() {
         try {
             return super.clone();
