@@ -1,12 +1,21 @@
 package com.example.Paint.model;
 
-import java.awt.*;
-
 public abstract class Shape implements Cloneable {
-    Color color;
-    Point startPoint;
-    int id;
-    public String type;
+    private String type, stroke, fill;
+    private int id;
+    private float startX, startY;
+    private float strokeWidth, rotation;
+
+    public Shape(String type, String stroke, String fill, int id, float startX, float startY, float strokeWidth, float rotation) {
+        this.type = type;
+        this.stroke = stroke;
+        this.fill = fill;
+        this.id = id;
+        this.startX = startX;
+        this.startY = startY;
+        this.strokeWidth = strokeWidth;
+        this.rotation = rotation;
+    }
 
     public Object clone() {
         try {
@@ -24,19 +33,59 @@ public abstract class Shape implements Cloneable {
         this.id = id;
     }
 
-    public Color getColor() {
-        return color;
+    public String getType() {
+        return type;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Point getStartPoint() {
-        return startPoint;
+    public String getStroke() {
+        return stroke;
     }
 
-    public void setStartPoint(Point startPoint) {
-        this.startPoint = startPoint;
+    public void setStroke(String stroke) {
+        this.stroke = stroke;
+    }
+
+    public String getFill() {
+        return fill;
+    }
+
+    public void setFill(String fill) {
+        this.fill = fill;
+    }
+
+    public float getStartX() {
+        return startX;
+    }
+
+    public void setStartX(float startX) {
+        this.startX = startX;
+    }
+
+    public float getStartY() {
+        return startY;
+    }
+
+    public void setStartY(float startY) {
+        this.startY = startY;
+    }
+
+    public float getStrokeWidth() {
+        return strokeWidth;
+    }
+
+    public void setStrokeWidth(float strokeWidth) {
+        this.strokeWidth = strokeWidth;
+    }
+
+    public float getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(float rotation) {
+        this.rotation = rotation;
     }
 }

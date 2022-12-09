@@ -2,17 +2,15 @@ package com.example.Paint.model;
 
 public class Square extends Shape {
     private float length;
+    private float cornerRadius;
 
-    public Square(float x, float y, float length) {
-        startPoint = new Point(x, y);
+    public Square(float length, String stroke, String fill, int id,
+                  float startX, float startY, float strokeWidth, float rotation, float cornerRadius) {
+        super("square", stroke, fill, id, startX, startY, strokeWidth, rotation);
         this.length = length;
-        // this.type = ShapeType.SQUARE;
-    }
+        this.cornerRadius = cornerRadius;
 
-    /*public Square(float x1, float y1, float x2, float y2) {
-        startPoint = new Point(x1, y1);
-        this.length = Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2));
-    }*/
+    }
 
     public float getLength() {
         return length;
@@ -20,5 +18,13 @@ public class Square extends Shape {
 
     public void setLength(float length) {
         this.length = length;
+    }
+
+    public float getCornerRadius() {
+        return cornerRadius;
+    }
+
+    public void setCornerRadius(float cornerRadius) {
+        this.cornerRadius = cornerRadius;
     }
 }

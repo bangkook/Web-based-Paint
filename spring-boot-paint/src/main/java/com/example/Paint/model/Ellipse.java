@@ -4,18 +4,12 @@ public class Ellipse extends Shape {
     private float width;
     private float height;
 
-    public Ellipse(float startX, float startY, float width, float height) {
-        startPoint = new Point(startX, startY);
+    public Ellipse(float width, float height, String stroke, String fill, int id,
+                   float startX, float startY, float strokeWidth, float rotation) {
+        super("ellipse", stroke, fill, id, startX, startY, strokeWidth, rotation);
         this.width = width;
         this.height = height;
-        //this.type = ShapeType.ELLIPSE;
     }
-
-    /*public Ellipse(float startX, float startY, float widthX, float widthY, float heightX, float heightY) {
-        startPoint = new Point(startX, startY);
-        this.width = (float) Math.sqrt((startY - widthY) * (startY - widthY) + (startX - widthX) * (startX - widthX));
-        this.height = (float) Math.sqrt((startY - heightY) * (startY - heightY) + (startX - heightX) * (startX - heightX));
-    }*/
 
     public float getWidth() {
         return width;

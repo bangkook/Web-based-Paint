@@ -1,22 +1,32 @@
 package com.example.Paint.model;
 
 public class Rectangle extends Shape {
-    private float height;
+    private float length;
     private float width;
+    private float cornerRadius;
 
-    public Rectangle(float x, float y, float width, float height) {
-        startPoint = new Point(x, y);
-        this.height = height;
+    public Rectangle(float length, float width, String stroke, String fill, int id,
+                     float startX, float startY, float strokeWidth, float rotation, float cornerRadius) {
+        super("rectangle", stroke, fill, id, startX, startY, strokeWidth, rotation);
+        this.length = length;
         this.width = width;
-        //this.type = ShapeType.RECTANGLE;
+        this.cornerRadius = cornerRadius;
     }
 
-    public float getHeight() {
-        return height;
+    public float getLength() {
+        return length;
     }
 
-    public void setHeight(float height) {
-        this.height = height;
+    public void setLength(float length) {
+        this.length = length;
+    }
+
+    public float getCornerRadius() {
+        return cornerRadius;
+    }
+
+    public void setCornerRadius(float cornerRadius) {
+        this.cornerRadius = cornerRadius;
     }
 
     public float getWidth() {

@@ -1,36 +1,39 @@
 package com.example.Paint.Service;
 
 import com.example.Paint.input.ShapeInput;
-import com.example.Paint.model.Circle;
-import com.example.Paint.model.Shape;
+import com.example.Paint.model.*;
 
 public class ShapeFactory {
 
     public static Shape getShape(ShapeInput shapeInput) {
-        String shape = shapeInput.type;
-        System.out.println("HERE" + shapeInput.startX);
+        String type = shapeInput.type;
 
-        if (shape.equals("circle")) {
-            return new Circle(shapeInput.startX, shapeInput.startY, shapeInput.radius);
+        System.out.println("HERE" + shapeInput.x);
+
+        if (type.equalsIgnoreCase("line")) {
+            return new Line(shapeInput.endX, shapeInput.endY, shapeInput.stroke, shapeInput.fill,
+                    shapeInput.id, shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation);
+
+        } else if (type.equalsIgnoreCase("circle")) {
+            return new Circle(shapeInput.radius, shapeInput.stroke, shapeInput.fill,
+                    shapeInput.id, shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation);
+
+        } else if (type.equalsIgnoreCase("ellipse")) {
+            return new Ellipse(shapeInput.width, shapeInput.height, shapeInput.stroke, shapeInput.fill,
+                    shapeInput.id, shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation);
+
+        } else if (type.equalsIgnoreCase("square")) {
+            return new Square(shapeInput.length, shapeInput.stroke, shapeInput.fill, shapeInput.id,
+                    shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation, shapeInput.cornerRadius);
+
+        } else if (type.equalsIgnoreCase("rectangle")) {
+            return new Rectangle(shapeInput.length, shapeInput.width, shapeInput.stroke, shapeInput.fill, shapeInput.id,
+                    shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation, shapeInput.cornerRadius);
+
+        } else if (type.equalsIgnoreCase("triangle")) {
+            return new Triangle(shapeInput.width, shapeInput.height, shapeInput.stroke, shapeInput.fill, shapeInput.id,
+                    shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation, shapeInput.cornerRadius);
         }
-        /*if (shape == ShapeType.LINE) {
-            return new Line(shapeInput.startX, shapeInput.startY, shapeInput.endX, shapeInput.endY);
-
-        } else if (shape == ShapeType.CIRCLE) {
-            return new Circle(shapeInput.startX, shapeInput.startY, shapeInput.radius);
-
-        } else if (shape == ShapeType.ELLIPSE) {
-            return new Ellipse(shapeInput.startX, shapeInput.startY, shapeInput.width, shapeInput.height);
-
-        } else if (shape == ShapeType.TRIANGLE) {
-            return new Line(shapeInput.startX, shapeInput.startY, shapeInput.width, shapeInput.height);
-
-        } else if (shape == ShapeType.SQUARE) {
-            return new Square(shapeInput.startX, shapeInput.startY, shapeInput.length);
-
-        } else if (shape == ShapeType.RECTANGLE) {
-            return new Rectangle(shapeInput.startX, shapeInput.startY, shapeInput.length, shapeInput.width);
-        }*/
 
         return null;
     }

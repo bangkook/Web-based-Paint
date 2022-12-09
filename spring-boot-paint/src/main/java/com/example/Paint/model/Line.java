@@ -2,36 +2,28 @@ package com.example.Paint.model;
 
 
 public class Line extends Shape {
-    private Point endPoint;
-    private float length;
+    private float endX, endY;
 
-    public Line(float startX, float startY, float endX, float endY) {
-        this.startPoint = new Point(startX, startY);
-        endPoint = new Point(endX, endY);
-        length = (float) Math.sqrt((endY - startY) * (endY - startY) + (endX - startX) * (endX - startX));
-        //this.type = ShapeType.LINE;
+    public Line(float endX, float endY, String stroke, String fill, int id,
+                float startX, float startY, float strokeWidth, float rotation) {
+        super("line", stroke, fill, id, startX, startY, strokeWidth, rotation);
+        this.endX = endX;
+        this.endY = endY;
     }
 
-    /*// draw horizontal line with given length
-    Line(float startX, float startY, float length) {
-        startPoint = new Point(startX, startY);
-        endPoint = new Point(startX, startY + length);
-        this.length = length;
-    }*/
-
-    public Point getEndPoint() {
-        return endPoint;
+    public float getEndX() {
+        return endX;
     }
 
-    public void setEndPoint(Point endPoint) {
-        this.endPoint = endPoint;
+    public void setEndX(float endX) {
+        this.endX = endX;
     }
 
-    public float getLength() {
-        return length;
+    public float getEndY() {
+        return endY;
     }
 
-    public void setLength(float length) {
-        this.length = length;
+    public void setEndY(float endY) {
+        this.endY = endY;
     }
 }

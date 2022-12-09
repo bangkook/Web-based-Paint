@@ -24,12 +24,12 @@ public class PaintController {
         return this.paintService.getAllShapes();
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", consumes = {"application/json"})
     public Shape addNewShape(@RequestBody ShapeInput shapeInput) {
         return this.paintService.addNewShape(shapeInput);
     }
 
-    @GetMapping("/copy")
+    @GetMapping(value = "/copy", produces = {"application/json"})
     public Shape addCopy(int id) {
         return this.paintService.addCopy(id);
     }

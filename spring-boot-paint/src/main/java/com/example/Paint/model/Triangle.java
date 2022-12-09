@@ -2,37 +2,40 @@ package com.example.Paint.model;
 
 //Triangle is represented using 3 points --> if coordinates better to be used, convert them to x1, y1, x2, y2, x3, y3--> to be represented as polygon in thr front-end
 public class Triangle extends Shape {
-    Point p1, p2, p3;
+    private float height;
+    private float width;
+    private float cornerRadius;
 
-    public Triangle(Point p1, Point p2, Point p3) {
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        //  this.type = ShapeType.TRIANGLE;
+    public Triangle(float width, float height, String stroke, String fill, int id,
+                    float startX, float startY, float strokeWidth, float rotation, float cornerRadius) {
+        super("triangle", stroke, fill, id, startX, startY, strokeWidth, rotation);
+        this.width = width;
+        this.height = height;
+        this.cornerRadius = cornerRadius;
+
     }
 
-    public void setP1(Point p1) {
-        this.p1 = p1;
+    public float getHeight() {
+        return height;
     }
 
-    public void setP2(Point p1) {
-        this.p2 = p2;
+    public void setHeight(float height) {
+        this.height = height;
     }
 
-    public void setP3(Point p1) {
-        this.p3 = p3;
+    public float getWidth() {
+        return width;
     }
 
-    public Point getP1() {
-        return this.p1;
+    public void setWidth(float width) {
+        this.width = width;
     }
 
-    public Point getP2() {
-        return this.p2;
+    public float getCornerRadius() {
+        return cornerRadius;
     }
 
-    public Point getP3() {
-        return this.p3;
+    public void setCornerRadius(float cornerRadius) {
+        this.cornerRadius = cornerRadius;
     }
-
 }
