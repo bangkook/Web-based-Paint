@@ -1,7 +1,7 @@
 package com.example.Paint.Service;
 
 import com.example.Paint.dao.ShapeDAO;
-import com.example.Paint.input.ShapeInput;
+import com.example.Paint.input.ShapeData;
 import com.example.Paint.model.Shape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class PaintService {
         return shapeDAO.getAllShapes();
     }
 
-    public Shape addNewShape(ShapeInput shapeInput) {
+    public Shape addNewShape(ShapeData shapeInput) {
         return shapeDAO.addShape(ShapeFactory.getShape(shapeInput));
     }
 

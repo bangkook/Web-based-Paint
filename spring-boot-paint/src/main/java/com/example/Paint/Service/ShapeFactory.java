@@ -1,11 +1,11 @@
 package com.example.Paint.Service;
 
-import com.example.Paint.input.ShapeInput;
+import com.example.Paint.input.ShapeData;
 import com.example.Paint.model.*;
 
 public class ShapeFactory {
 
-    public static Shape getShape(ShapeInput shapeInput) {
+    public static Shape getShape(ShapeData shapeInput) {
         String type = shapeInput.type;
 
         System.out.println("HERE" + shapeInput.x);

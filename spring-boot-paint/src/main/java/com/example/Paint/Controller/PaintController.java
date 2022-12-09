@@ -1,7 +1,7 @@
 package com.example.Paint.Controller;
 
 import com.example.Paint.Service.PaintService;
-import com.example.Paint.input.ShapeInput;
+import com.example.Paint.input.ShapeData;
 import com.example.Paint.model.Shape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class PaintController {
     }
 
     @PostMapping(value = "/add", consumes = {"application/json"})
-    public Shape addNewShape(@RequestBody ShapeInput shapeInput) {
+    public Shape addNewShape(@RequestBody ShapeData shapeInput) {
         return this.paintService.addNewShape(shapeInput);
     }
 

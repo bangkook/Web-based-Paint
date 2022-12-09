@@ -1,6 +1,6 @@
 package com.example.Paint.input;
 
-public class ShapeInput {
+public class ShapeData {
     public String type, stroke, fill;
     public int id;
     public float x, y, endX, endY;
