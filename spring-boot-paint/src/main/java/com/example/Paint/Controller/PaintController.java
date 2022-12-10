@@ -45,5 +45,11 @@ public class PaintController {
     public void deleteShape(@PathVariable("shapeId") int shapeId) {
         this.paintService.deleteShape(shapeId);
     }
-
+    
+    @DeleteMapping("/delete/{shapes}")
+    public void deleteAll(@RequestBody String clear) {
+    	this.paintService.deleteAll();
+    }
+    
+    //TODO Undo and Redo requests
 }

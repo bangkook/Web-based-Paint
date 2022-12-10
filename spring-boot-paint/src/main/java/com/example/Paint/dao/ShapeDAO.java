@@ -16,5 +16,11 @@ public interface ShapeDAO {
     Shape updateShape(int id, ShapeData shapeData);
 
     void deleteShape(int id);
-
+    
+    void deleteAll();
+    
+    Map<Integer, Shape> undo();
+    
+    Map<Integer, Shape> redo();
+    
 }

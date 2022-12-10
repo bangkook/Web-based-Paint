@@ -4,25 +4,38 @@ import com.example.Paint.Service.ShapePrototype;
 import com.example.Paint.input.ShapeData;
 import com.example.Paint.model.*;
 import org.springframework.stereotype.Component;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
+import java.util.Stack;
 
 
 @Component
 public class FakeShapeDataAccessService implements ShapeDAO {
     // List<Shape> DB = new ArrayList<>();
-    Map<Integer, Shape> DB = new HashMap<>();
+    private Map<Integer, Shape> DB = new HashMap<>();
     int MAX = 10000; // maximum number of shapes to be saved in database
-
+    
+    //stores top of undo stack
+    private Point action;
+    //stores all forward actions
+    private Stack<Point> undo = new Stack<Point>();
+    //stores all backward actions
+	private Stack<Point> redo = new Stack<Point>();
+	
+	private Stack<ArrayList<Integer>> clearedIdsUndo = new Stack<ArrayList<Integer>>();
+	
+	private Stack<ArrayList<Integer>> clearedIdsRedo = new Stack<ArrayList<Integer>>();
+	
     @Override
     public Map<Integer, Shape> getAllShapes() {
         return DB;
     }
 
     @Override
-    public Shape addShape(Shape shape) {
+    public Shape addShape(Shape shape) { //action added redo done
         int id = new Random().nextInt(MAX);
         // check for id uniqueness
         while (DB.containsKey(id)) {
@@ -30,33 +43,144 @@ public class FakeShapeDataAccessService implements ShapeDAO {
         }
         shape.setId(id);
         DB.put(id, shape);
+        undo.add(new Point(id, shape));
+        redo.clear();
+        clearedIdsRedo.clear();
         return shape;
     }
 
     @Override
-    public Shape addCopy(int id) {
+    public Shape addCopy(int id) { //action added, redo done
         if (!DB.containsKey(id))
             return null;
 
         Shape copiedShape = ShapePrototype.getClone(DB.get(id));
+        undo.add(new Point(copiedShape.getId(), copiedShape));
+        redo.clear();
+        clearedIdsRedo.clear();
         return addShape(copiedShape);
     }
 
     @Override
-    public Shape updateShape(int id, ShapeData shapeData) {
+    public Shape updateShape(int id, ShapeData shapeData) { //action added redo done
         if (!DB.containsKey(id))
             return null;
         Shape oldShape = DB.get(id);
-
         //shape = ShapeFactory.getShape(shapeData);
+        redo.clear();
+        clearedIdsRedo.clear();
         return setAttributes(oldShape, shapeData);
     }
 
     @Override
-    public void deleteShape(int id) {
+    public void deleteShape(int id) { //action added redo done
         DB.remove(id);
+        undo.add(new Point(id, null));
+        redo.clear();
+        clearedIdsRedo.clear();
     }
-
+    
+    @Override
+    public void deleteAll() { //action added redo done
+    	this.DB.clear();
+    	this.undo.add(new Point(-1, null)); //means all clearedIds
+    	this.formClearAction();
+    	redo.clear();
+        clearedIdsRedo.clear();
+    }
+    
+    private void formClearAction() {
+    	for(Entry<Integer, Shape> entry : DB.entrySet()) {
+    		clearedIdsUndo.peek().add(entry.getKey());
+    	}
+    }
+    
+    @Override
+    public Map<Integer, Shape> undo() {
+    	if(undo.isEmpty())
+    		return null;
+    	action = new Point(undo.peek().getKey(), undo.peek().getShape());
+    	undo.pop();
+    	redo.push(action);
+    	formAllShapesOnUndo(action);
+    	return this.getAllShapes();
+    }
+    
+    /*
+     * Actions can be:
+     * (+ve int, shape) //adding or updating shape
+     * (-ve int, null) // clear all forward
+     * (+ve int, null) // deleting shape
+     * */
+    private void formAllShapesOnUndo(Point action) {
+    	if(action.getKey() > 0 && action.getShape() == null) { //means last action was deleting that shape
+    		Point index = this.contiansKey(action.getKey());
+    		if(index != null)  //key found and so restore shape
+    			DB.put(action.getKey(), undo.get(index.getKey()).getShape());
+    	} else if(action.getKey() < 0) { //means last action was to clear all
+    		this.restoreAllUndo();
+    	} else if(action.getKey() > 0) { // means last action was either adding new shape or updating shape
+    		Point index = contiansKey(action.getKey()); 
+    		if(index != null) { //shape found means it was updated
+    			DB.replace(action.getKey(), undo.get(index.getKey()).getShape());
+    		} else {
+    			DB.remove(index);
+    		}
+    	}
+    }
+    
+    private void restoreAllUndo() {
+    	ArrayList<Integer> indexes = this.clearedIdsUndo.peek();
+    	for(int i = 0; i < indexes.size(); i++) {
+    		Point ind = this.contiansKey(indexes.get(i));
+    		DB.put(ind.getKey(), ind.getShape());
+    	}
+    	//all shapes restored, peek accessed then poped on redone when clear all action is in redo 
+    	clearedIdsRedo.add(clearedIdsUndo.pop()); 
+    }
+    
+    private Point contiansKey(int id) {
+    	for(int i = undo.size() - 1; i >= 0; i--) {
+    		if(id == undo.get(i).getKey() && undo.get(i).getShape() != null) 
+    			return new Point(undo.get(i).getKey(), undo.get(i).getShape());
+    	}
+    	return null;
+    }
+    
+    @Override
+    public Map<Integer, Shape> redo() {
+    	if(redo.isEmpty())
+    		return null;
+    	action = new Point(redo.peek().getKey(), redo.peek().getShape());
+    	redo.pop();
+    	undo.push(action);
+    	this.formAllShapesOnRedo(action);
+    	return this.getAllShapes();
+    }
+    
+    /*Actions can be:
+     * (+ve, shape)
+     * (-ve, null) delete all
+     * (+ve, null) delete it
+     * */
+    private void formAllShapesOnRedo(Point action) {
+    	if(redo.peek().getKey() < 0) { //delete all
+    		this.DB.clear();
+        	this.undo.add(new Point(-1, null)); //means all clearedIds
+        	this.formClearAction();
+    	} else if(redo.peek().getKey() > 0 && redo.peek().getShape() == null) { //delete shape
+    		DB.remove(redo.peek().getKey());
+            undo.add(new Point(redo.peek().getKey(), null));
+    	} else if(redo.peek().getKey() > 0 && redo.peek().getShape() != null) { //either add or modify
+    		Point index = contiansKey(action.getKey()); 
+    		if(index != null) { //shape found means it was updated
+    			DB.replace(action.getKey(), undo.get(index.getKey()).getShape());
+    		} else {
+    			DB.put(index.getKey(), index.getShape());
+    		}
+    	}
+    }
+    
     private Shape setAttributes(Shape shape, ShapeData shapeData) {
         shape.setStartX(shapeData.x);
         shape.setStartY(shapeData.y);
@@ -89,6 +213,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 ((Line) shape).setEndY(shapeData.endY);
                 break;
         }
+        undo.add(new Point(shape.getId(), shape));
         return shape;
     }
 }

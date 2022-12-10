@@ -5,6 +5,7 @@ import com.example.Paint.input.ShapeData;
 import com.example.Paint.model.Shape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+//import Actions.ActionsData;
 
 import java.util.Map;
 
@@ -12,9 +13,13 @@ import java.util.Map;
 public class PaintService {
     @Autowired
     private final ShapeDAO shapeDAO;
+    
+//    @Autowired
+//    private final ActionsData actionsData;
 
     public PaintService(ShapeDAO shapeDAO) {
         this.shapeDAO = shapeDAO;
+//        this.actionsData = actionsData;
     }
 
     public Map<Integer, Shape> getAllShapes() {
@@ -36,6 +41,17 @@ public class PaintService {
     public void deleteShape(int id) {
         shapeDAO.deleteShape(id);
     }
+    
+    public Map<Integer, Shape> undo() {
+    	return shapeDAO.undo();
+    }
 
+    public Map<Integer, Shape> redo() {
+    	return shapeDAO.redo();
+    }
+    
+    public void deleteAll() {
+    	return shapeDAO.deleteAll();
+    }
 
 }
