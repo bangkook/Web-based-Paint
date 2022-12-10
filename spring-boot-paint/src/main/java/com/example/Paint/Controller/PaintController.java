@@ -6,6 +6,7 @@ import com.example.Paint.model.Shape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -45,11 +46,22 @@ public class PaintController {
     public void deleteShape(@PathVariable("shapeId") int shapeId) {
         this.paintService.deleteShape(shapeId);
     }
-    
-    @DeleteMapping("/delete/{shapes}")
-    public void deleteAll(@RequestBody String clear) {
-    	this.paintService.deleteAll();
+
+    @DeleteMapping("/deleteAll")
+    public void deleteAll() {
+        this.paintService.deleteAll();
     }
-    
+
+    @PostMapping("/save/{fileName}/{extension}")
+    public void save(@PathVariable("fileName") String fileName,
+                     @PathVariable("extension") String extension) throws IOException {
+        this.paintService.save(fileName, extension);
+    }
+
+    @RequestMapping("/load/{fileName}/{extension}")
+    public Map<Integer, Shape> load(@PathVariable("fileName") String fileName,
+                                    @PathVariable("extension") String extension) throws IOException {
+        return this.paintService.load(fileName, extension);
+    }
     //TODO Undo and Redo requests
 }
