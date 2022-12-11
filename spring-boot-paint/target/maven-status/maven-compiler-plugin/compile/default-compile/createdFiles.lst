@@ -1,3 +1,4 @@
+com\example\Paint\dao\Utility.class
 com\example\Paint\model\Ellipse.class
 com\example\Paint\model\Rectangle.class
 com\example\Paint\model\Square.class

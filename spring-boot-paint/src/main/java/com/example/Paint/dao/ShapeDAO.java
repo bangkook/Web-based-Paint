@@ -24,8 +24,8 @@ public interface ShapeDAO {
 
     Map<Integer, Shape> redo();
 
-    void save(String fileName, String extension) throws IOException;
+    void save() throws IOException;
 
-    Map<Integer, Shape> load(String fileName, String extension) throws IOException;
+    Map<Integer, Shape> load() throws IOException;
 
 }

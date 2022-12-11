@@ -52,16 +52,14 @@ public class PaintController {
         this.paintService.deleteAll();
     }
 
-    @PostMapping("/save/{fileName}/{extension}")
-    public void save(@PathVariable("fileName") String fileName,
-                     @PathVariable("extension") String extension) throws IOException {
-        this.paintService.save(fileName, extension);
+    @GetMapping("/save")
+    public void save() throws IOException {
+        this.paintService.save();
     }
 
-    @RequestMapping("/load/{fileName}/{extension}")
-    public Map<Integer, Shape> load(@PathVariable("fileName") String fileName,
-                                    @PathVariable("extension") String extension) throws IOException {
-        return this.paintService.load(fileName, extension);
+    @RequestMapping("/load")
+    public Map<Integer, Shape> load() throws IOException {
+        return this.paintService.load();
     }
     //TODO Undo and Redo requests
 }

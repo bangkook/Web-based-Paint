@@ -54,12 +54,12 @@ public class PaintService {
         shapeDAO.deleteAll();
     }
 
-    public void save(String fileName, String extension) throws IOException {
-        shapeDAO.save(fileName, extension);
+    public void save() throws IOException {
+        shapeDAO.save();
     }
 
-    public Map<Integer, Shape> load(String fileName, String extension) throws IOException {
-        return shapeDAO.load(fileName, extension);
+    public Map<Integer, Shape> load() throws IOException {
+        return shapeDAO.load();
     }
 
 }

@@ -186,10 +186,16 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     }
 
     @Override
-    public void save(String fileName, String extension) throws IOException {
+    public void save() throws IOException {
+        Utility util = new Utility();
+        util.saveFile();
+        String filePath = util.getFilePath();
+        String extension = util.getExtension();
+        if (filePath == null) return;
+
         if (extension.equals(".json")) {
             try {
-                BufferedWriter writer = Files.newBufferedWriter(Paths.get(fileName.concat(extension)));
+                BufferedWriter writer = Files.newBufferedWriter(Paths.get(filePath.concat(extension)));
 
                 // create Gson instance
                 Gson gson = new Gson();
@@ -205,27 +211,32 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             }
         } else {
             try {
-                FileOutputStream fos = new FileOutputStream(fileName.concat(extension));
+                FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
                 XMLEncoder encoder = new XMLEncoder(fos);
                 encoder.writeObject(DB);
                 encoder.close();
                 fos.flush();
                 fos.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
 
     @Override
-    public Map<Integer, Shape> load(String fileName, String extension) throws IOException {
+    public Map<Integer, Shape> load() throws IOException {
+        Utility util = new Utility();
+        util.loadFile();
+        String filePath = util.getFilePath();
+        String extension = util.getExtension();
+        if (filePath == null) return DB;
         if (extension.equals(".json")) {
             try {
                 // create Gson instance
                 Gson gson = new Gson();
 
                 // create a reader
-                Reader reader = Files.newBufferedReader(Paths.get(fileName.concat(extension)));
+                Reader reader = Files.newBufferedReader(Paths.get(filePath));
 
                 // convert JSON file to map
                 DB = gson.fromJson(reader, Map.class);
@@ -243,7 +254,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
         } else {
 
             try {
-                FileInputStream fis = new FileInputStream(fileName.concat(extension));
+                FileInputStream fis = new FileInputStream(filePath);
                 XMLDecoder decoder = new XMLDecoder(fis);
                 DB = (Map<Integer, Shape>) decoder.readObject();
                 decoder.close();
