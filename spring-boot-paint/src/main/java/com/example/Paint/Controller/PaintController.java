@@ -61,5 +61,16 @@ public class PaintController {
     public Map<Integer, Shape> load() throws IOException {
         return this.paintService.load();
     }
+
     //TODO Undo and Redo requests
+    @RequestMapping("/undo")
+    public Map<Integer, Shape> undo() {
+        return this.paintService.undo();
+    }
+
+    @RequestMapping("/redo")
+    public Map<Integer, Shape> redo() {
+        return this.paintService.redo();
+    }
+
 }
