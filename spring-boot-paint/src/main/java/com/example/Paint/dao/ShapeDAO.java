@@ -26,6 +26,6 @@ public interface ShapeDAO {
 
     void save() throws IOException;
 
-    Map<Integer, Shape> load() throws IOException;
+    String load() throws IOException;
 
 }

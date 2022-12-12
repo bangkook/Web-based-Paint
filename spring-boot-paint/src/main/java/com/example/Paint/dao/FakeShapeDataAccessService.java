@@ -211,12 +211,20 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             }
         } else {
             try {
-                FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
+                /*FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
                 XMLEncoder encoder = new XMLEncoder(fos);
                 encoder.writeObject(DB);
                 encoder.close();
                 fos.flush();
+                fos.close();*/
+                FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                XMLEncoder xmlEncoder = new XMLEncoder(bos);
+                xmlEncoder.writeObject(DB);
+                xmlEncoder.close();
+                fos.flush();
                 fos.close();
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -224,12 +232,12 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     }
 
     @Override
-    public Map<Integer, Shape> load() throws IOException {
+    public String load() throws IOException {
         Utility util = new Utility();
         util.loadFile();
         String filePath = util.getFilePath();
         String extension = util.getExtension();
-        if (filePath == null) return DB;
+        if (filePath == null) new Gson().toJson(DB);
         if (extension.equals(".json")) {
             try {
                 // create Gson instance
@@ -244,6 +252,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 // print map entries
                 for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
                     System.out.println(entry.getKey() + "=" + entry.getValue());
+                    //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
                 }
 
                 // close reader
@@ -262,7 +271,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 e.printStackTrace();
             }
         }
-        return DB;
+        return new Gson().toJson(DB);
     }
 
     private Shape setAttributes(Shape shape, ShapeData shapeData) {
@@ -282,8 +291,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 ((Ellipse) shape).setWidth(shapeData.width);
                 break;
             case "triangle":
-                ((Triangle) shape).setHeight(shapeData.height);
-                ((Triangle) shape).setWidth(shapeData.width);
+                ((Triangle) shape).setRadius(shapeData.radius);
                 break;
             case "rectangle":
                 ((Rectangle) shape).setLength(shapeData.length);

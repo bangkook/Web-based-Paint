@@ -31,7 +31,7 @@ public class ShapeFactory {
                     shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation, shapeInput.cornerRadius);
 
         } else if (type.equalsIgnoreCase("triangle")) {
-            return new Triangle(shapeInput.width, shapeInput.height, shapeInput.stroke, shapeInput.fill, shapeInput.id,
+            return new Triangle(shapeInput.radius, shapeInput.stroke, shapeInput.fill, shapeInput.id,
                     shapeInput.x, shapeInput.y, shapeInput.strokeWidth, shapeInput.rotation, shapeInput.cornerRadius);
         }
 

@@ -58,7 +58,7 @@ public class PaintService {
         shapeDAO.save();
     }
 
-    public Map<Integer, Shape> load() throws IOException {
+    public String load() throws IOException {
         return shapeDAO.load();
     }
 
