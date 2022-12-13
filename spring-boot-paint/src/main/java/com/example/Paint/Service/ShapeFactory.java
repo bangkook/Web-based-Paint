@@ -33,8 +33,8 @@ public class ShapeFactory {
         } else if (type.equalsIgnoreCase("triangle")) {
             return new Triangle(shapeInput.radius, shapeInput.stroke, shapeInput.fill, shapeInput.id,
                     shapeInput.x, shapeInput.y, shapeInput.scaleX, shapeInput.strokeWidth, shapeInput.rotation, shapeInput.cornerRadius);
-        } else if (type.equalsIgnoreCase("pen")) {
-            return new Pen(shapeInput.stroke, shapeInput.fill, shapeInput.id, shapeInput.x, shapeInput.y, shapeInput.scaleX, 
+        } else if (type.equalsIgnoreCase("freehand")) {
+            return new Pen(shapeInput.stroke, shapeInput.fill, shapeInput.id, shapeInput.x, shapeInput.y, shapeInput.scaleX,
                     shapeInput.strokeWidth, shapeInput.rotation, shapeInput.points);
         }
 

@@ -5,19 +5,19 @@ import java.beans.JavaBean;
 import java.util.ArrayList;
 
 @JavaBean
-public class Pen extends Shape implements Serializable{
-    ArrayList<Float> points = new ArrayList<Float>();
+public class Pen extends Shape implements Serializable {
+    Float[] points;
 
-    public Pen(String stroke, String fill, int id,float startX, 
-    		    float startY, float scaleX, float strokeWidth, float rotation, ArrayList<Float> points) {
-        super("pen", stroke, fill, id, startX, startY, scaleX, strokeWidth, rotation);
+    public Pen(String stroke, String fill, int id, float startX, float startY,
+               float scaleX, float strokeWidth, float rotation, Float[] points) {
+        super("freehand", stroke, fill, id, startX, startY, scaleX, strokeWidth, rotation);
         this.points = points;
     }
     
     public Pen(){}
     
-    public ArrayList<Float> getPoints() { return this.points; }
+    public Float[] getPoints() { return this.points; }
     
-    public void serPoints(ArrayList<Float> points) { this.points = points; }
+    public void serPoints(Float[] points) { this.points = points; }
     
 }
