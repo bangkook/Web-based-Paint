@@ -6,8 +6,8 @@ public class Triangle extends Shape {
     private float cornerRadius;
 
     public Triangle(float radius, String stroke, String fill, int id,
-                    float startX, float startY, float strokeWidth, float rotation, float cornerRadius) {
-        super("triangle", stroke, fill, id, startX, startY, strokeWidth, rotation);
+                    float startX, float startY, float scaleX, float strokeWidth, float rotation, float cornerRadius) {
+        super("triangle", stroke, fill, id, startX, startY, scaleX, strokeWidth, rotation);
         this.radius = radius;
         this.cornerRadius = cornerRadius;
 

@@ -56,12 +56,14 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     }
 
     @Override
-    public Shape addCopy(int id) { //action added, redo done
-        if (!DB.containsKey(id))
+    public Shape addCopy(int shapeId, int idCloned, float x, float y) { //action added, redo done
+        if (!DB.containsKey(shapeId))
             return null;
-
-        Shape copiedShape = ShapePrototype.getClone(DB.get(id));
-        undo.add(new Point(copiedShape.getId(), copiedShape));
+        
+        Shape copiedShape = ShapePrototype.getClone(DB.get(shapeId));
+        copiedShape.setStartX(x);
+        copiedShape.setStartY(y);
+        System.out.println(x + " " + y);
         redo.clear();
         clearedIdsRedo.clear();
         return addShape(copiedShape);

@@ -30,8 +30,8 @@ public class PaintService {
         return shapeDAO.addShape(ShapeFactory.getShape(shapeInput));
     }
 
-    public Shape addCopy(int id) {
-        return shapeDAO.addCopy(id);
+    public Shape addCopy(int shapeId, int idCloned, float x, float y) {
+        return shapeDAO.addCopy(shapeId, idCloned, x, y);
     }
 
     public Shape updateShape(int id, ShapeData shapeData) {

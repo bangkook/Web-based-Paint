@@ -5,8 +5,8 @@ public class Line extends Shape {
     private float endX, endY;
 
     public Line(float endX, float endY, String stroke, String fill, int id,
-                float startX, float startY, float strokeWidth, float rotation) {
-        super("line", stroke, fill, id, startX, startY, strokeWidth, rotation);
+                float startX, float startY, float scaleX, float strokeWidth, float rotation) {
+        super("line", stroke, fill, id, startX, startY, scaleX, strokeWidth, rotation);
         this.endX = endX;
         this.endY = endY;
     }

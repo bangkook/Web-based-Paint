@@ -12,8 +12,8 @@ public interface ShapeDAO {
 
     Shape addShape(Shape shape);
 
-    Shape addCopy(int id);
-
+    Shape addCopy(int shapeId, int idCloned, float x, float y);
+    
     Shape updateShape(int id, ShapeData shapeData);
 
     void deleteShape(int id);

@@ -6,10 +6,10 @@ import java.beans.JavaBean;
 public abstract class Shape implements Cloneable {
     private String type, stroke, fill;
     private int id;
-    private float startX, startY;
+    private float startX, startY, scaleX;
     private float strokeWidth, rotation;
 
-    public Shape(String type, String stroke, String fill, int id, float startX, float startY, float strokeWidth, float rotation) {
+    public Shape(String type, String stroke, String fill, int id, float startX, float startY, float scaleX, float strokeWidth, float rotation) {
         this.type = type;
         this.stroke = stroke;
         this.fill = fill;
@@ -94,4 +94,13 @@ public abstract class Shape implements Cloneable {
     public void setRotation(float rotation) {
         this.rotation = rotation;
     }
+
+    public float getScaleX() {
+        return scaleX;
+    }
+
+    public void setScaleX(float rotation) {
+        this.scaleX = rotation;
+    }
+    
 }

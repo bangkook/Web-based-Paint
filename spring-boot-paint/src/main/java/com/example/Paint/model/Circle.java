@@ -4,8 +4,8 @@ public class Circle extends Shape {
     private float radius;
 
     public Circle(float radius, String stroke, String fill, int id,
-                  float startX, float startY, float strokeWidth, float rotation) {
-        super("circle", stroke, fill, id, startX, startY, strokeWidth, rotation);
+                  float startX, float startY, float scaleX, float strokeWidth, float rotation) {
+        super("circle", stroke, fill, id, startX, startY, scaleX, strokeWidth, rotation);
         this.radius = radius;
     }
 

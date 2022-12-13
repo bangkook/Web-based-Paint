@@ -5,8 +5,8 @@ public class Square extends Shape {
     private float cornerRadius;
 
     public Square(float length, String stroke, String fill, int id,
-                  float startX, float startY, float strokeWidth, float rotation, float cornerRadius) {
-        super("square", stroke, fill, id, startX, startY, strokeWidth, rotation);
+                float startX, float startY, float scaleX, float strokeWidth, float rotation, float cornerRadius) {
+        super("square", stroke, fill, id, startX, startY, scaleX, strokeWidth, rotation);
         this.length = length;
         this.cornerRadius = cornerRadius;
 
