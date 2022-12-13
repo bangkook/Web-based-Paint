@@ -8,7 +8,7 @@ public class ShapeFactory {
     public static Shape getShape(ShapeData shapeInput) {
         String type = shapeInput.type;
 
-        System.out.println("HERE" + shapeInput.x);
+        System.out.println("HERE" + shapeInput.id);
 
         if (type.equalsIgnoreCase("line")) {
             return new Line(shapeInput.endX, shapeInput.endY, shapeInput.stroke, shapeInput.fill,

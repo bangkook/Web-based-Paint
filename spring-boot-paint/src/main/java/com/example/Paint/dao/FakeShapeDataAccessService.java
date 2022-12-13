@@ -11,8 +11,11 @@ import java.beans.XMLEncoder;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Stack;
 
 
 @Component
@@ -28,9 +31,9 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     //stores all backward actions
     private Stack<Point> redo = new Stack<Point>();
 
-    private Stack<ArrayList<Integer>> clearedIdsUndo = new Stack<ArrayList<Integer>>();
+    private Stack<ArrayList<Shape>> clearedIdsUndo = new Stack<ArrayList<Shape>>();
 
-    private Stack<ArrayList<Integer>> clearedIdsRedo = new Stack<ArrayList<Integer>>();
+    private Stack<ArrayList<Shape>> clearedIdsRedo = new Stack<ArrayList<Shape>>();
 
     @Override
     public Map<Integer, Shape> getAllShapes() {
@@ -39,12 +42,12 @@ public class FakeShapeDataAccessService implements ShapeDAO {
 
     @Override
     public Shape addShape(Shape shape) { //action added redo done
-        int id = new Random().nextInt(MAX);
+        int id = shape.getId();
         // check for id uniqueness
-        while (DB.containsKey(id)) {
+        /*while (DB.containsKey(id)) {
             id = new Random().nextInt(MAX);
-        }
-        shape.setId(id);
+        }*/
+        //shape.setId(id);
         DB.put(id, shape);
         undo.add(new Point(id, shape));
         redo.clear();
@@ -77,6 +80,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
 
     @Override
     public void deleteShape(int id) { //action added redo done
+        this.formDeleteAction(id);
         DB.remove(id);
         undo.add(new Point(id, null));
         redo.clear();
@@ -85,28 +89,36 @@ public class FakeShapeDataAccessService implements ShapeDAO {
 
     @Override
     public void deleteAll() { //action added redo done
-        this.DB.clear();
         this.undo.add(new Point(-1, null)); //means all clearedIds
         this.formClearAction();
         redo.clear();
         clearedIdsRedo.clear();
+        this.DB.clear();
     }
 
     private void formClearAction() {
+        ArrayList<Shape> clearedIds = new ArrayList<Shape>();
         for (Entry<Integer, Shape> entry : DB.entrySet()) {
-            clearedIdsUndo.peek().add(entry.getKey());
+            clearedIds.add(entry.getValue());
         }
+        clearedIdsUndo.push(clearedIds);
+    }
+
+    private void formDeleteAction(int id) {
+        ArrayList<Shape> clearedIds = new ArrayList<Shape>();
+        clearedIds.add(DB.get(id));
+        clearedIdsUndo.push(clearedIds);
     }
 
     @Override
     public Map<Integer, Shape> undo() {
         if (undo.isEmpty())
-            return null;
+            return DB;
         action = new Point(undo.peek().getKey(), undo.peek().getShape());
         undo.pop();
         redo.push(action);
         formAllShapesOnUndo(action);
-        return this.getAllShapes();
+        return DB;
     }
 
     /*
@@ -117,32 +129,47 @@ public class FakeShapeDataAccessService implements ShapeDAO {
      * */
     private void formAllShapesOnUndo(Point action) {
         if (action.getKey() > 0 && action.getShape() == null) { //means last action was deleting that shape
-            Point index = this.contiansKey(action.getKey());
-            if (index != null)  //key found and so restore shape
-                DB.put(action.getKey(), undo.get(index.getKey()).getShape());
+            //Point index = this.containsKey(action.getKey());
+            //if (index != null)  //key found and so restore shape
+            //action.setShape(clearedIdsUndo.pop().get(0));
+            DB.put(action.getKey(), clearedIdsUndo.peek().get(0));
+            System.out.println("restoreOne undo");
+            clearedIdsRedo.push(clearedIdsUndo.pop());
         } else if (action.getKey() < 0) { //means last action was to clear all
             this.restoreAllUndo();
+            System.out.println("restoreAll undo");
         } else if (action.getKey() > 0) { // means last action was either adding new shape or updating shape
-            Point index = contiansKey(action.getKey());
+            Point index = this.containsKey(action.getKey());
             if (index != null) { //shape found means it was updated
-                DB.replace(action.getKey(), undo.get(index.getKey()).getShape());
+                DB.replace(action.getKey(), index.getShape());
             } else {
-                DB.remove(index);
+                DB.remove(action.getKey());
+                System.out.println("deleteOne UNDO");
+
+                for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
+                    System.out.println(entry.getKey() + "=" + entry.getValue());
+                    //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
+                }
             }
         }
     }
 
     private void restoreAllUndo() {
-        ArrayList<Integer> indexes = this.clearedIdsUndo.peek();
+        if (clearedIdsUndo.isEmpty()) return;
+        ArrayList<Shape> indexes = this.clearedIdsUndo.peek();
         for (int i = 0; i < indexes.size(); i++) {
-            Point ind = this.contiansKey(indexes.get(i));
-            DB.put(ind.getKey(), ind.getShape());
+            //Point ind = this.containsKey(indexes.get(i));
+            DB.put(indexes.get(i).getId(), indexes.get(i));
+        }
+        for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+            //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
         }
         //all shapes restored, peek accessed then poped on redone when clear all action is in redo
         clearedIdsRedo.add(clearedIdsUndo.pop());
     }
 
-    private Point contiansKey(int id) {
+    private Point containsKey(int id) {
         for (int i = undo.size() - 1; i >= 0; i--) {
             if (id == undo.get(i).getKey() && undo.get(i).getShape() != null)
                 return new Point(undo.get(i).getKey(), undo.get(i).getShape());
@@ -153,12 +180,13 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     @Override
     public Map<Integer, Shape> redo() {
         if (redo.isEmpty())
-            return null;
+            return DB;
         action = new Point(redo.peek().getKey(), redo.peek().getShape());
         redo.pop();
         undo.push(action);
+        System.out.println("redo");
         this.formAllShapesOnRedo(action);
-        return this.getAllShapes();
+        return DB;
     }
 
     /*Actions can be:
@@ -167,21 +195,27 @@ public class FakeShapeDataAccessService implements ShapeDAO {
      * (+ve, null) delete it
      * */
     private void formAllShapesOnRedo(Point action) {
-        if (redo.peek().getKey() < 0) { //delete all
-            this.DB.clear();
-            this.undo.add(new Point(-1, null)); //means all clearedIds
+        if (action.getKey() < 0) { //delete all
+            System.out.println("deleteAll redo");
+            //this.undo.add(new Point(-1, null)); //means all clearedIds
             this.formClearAction();
-        } else if (redo.peek().getKey() > 0 && redo.peek().getShape() == null) { //delete shape
-            DB.remove(redo.peek().getKey());
-            undo.add(new Point(redo.peek().getKey(), null));
-        } else if (redo.peek().getKey() > 0 && redo.peek().getShape() != null) { //either add or modify
-            Point index = contiansKey(action.getKey());
-            if (index != null) { //shape found means it was updated
-                DB.replace(action.getKey(), undo.get(index.getKey()).getShape());
+            this.DB.clear();
+        } else if (action.getKey() > 0 && action.getShape() == null) { //delete shape
+            DB.remove(action.getKey());
+            clearedIdsUndo.push(clearedIdsRedo.pop());
+            //undo.add(new Point(action.getKey(), null));
+            System.out.println("deleteOne redo");
+        } else if (action.getKey() > 0 && action.getShape() != null) { //either add or modify
+            //Point index = this.containsKey(action.getKey());
+            DB.put(action.getKey(), action.getShape());
+            System.out.println("add or modify redo");
+
+            /*if (index != null) { //shape found means it was updated
+                DB.replace(action.getKey(), index.getShape());
             } else {
                 assert false;
                 DB.put(index.getKey(), index.getShape());
-            }
+            }*/
         }
     }
 
@@ -211,15 +245,10 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             }
         } else {
             try {
-                /*FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
-                XMLEncoder encoder = new XMLEncoder(fos);
-                encoder.writeObject(DB);
-                encoder.close();
-                fos.flush();
-                fos.close();*/
+                
                 FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                XMLEncoder xmlEncoder = new XMLEncoder(bos);
+                //ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                XMLEncoder xmlEncoder = new XMLEncoder(fos);
                 xmlEncoder.writeObject(DB);
                 xmlEncoder.close();
                 fos.flush();

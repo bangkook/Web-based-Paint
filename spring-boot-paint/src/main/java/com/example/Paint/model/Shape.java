@@ -1,5 +1,8 @@
 package com.example.Paint.model;
 
+import java.beans.JavaBean;
+
+@JavaBean
 public abstract class Shape implements Cloneable {
     private String type, stroke, fill;
     private int id;
