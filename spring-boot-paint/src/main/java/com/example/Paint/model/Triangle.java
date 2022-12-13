@@ -13,7 +13,9 @@ public class Triangle extends Shape {
 
     }
 
-    public Triangle() {}
+    public Triangle() {
+        super();
+    }
 
     public float getRadius() {
         return radius;

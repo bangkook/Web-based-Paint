@@ -16,6 +16,7 @@ public abstract class Shape implements Cloneable {
         this.id = id;
         this.startX = startX;
         this.startY = startY;
+        this.scaleX = scaleX;
         this.strokeWidth = strokeWidth;
         this.rotation = rotation;
     }
@@ -102,5 +103,5 @@ public abstract class Shape implements Cloneable {
     public void setScaleX(float rotation) {
         this.scaleX = rotation;
     }
-    
+
 }

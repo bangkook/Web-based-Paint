@@ -10,8 +10,10 @@ public class Ellipse extends Shape {
         this.width = width;
         this.height = height;
     }
-    
-    public Ellipse() {}
+
+    public Ellipse() {
+        super();
+    }
 
     public float getWidth() {
         return width;

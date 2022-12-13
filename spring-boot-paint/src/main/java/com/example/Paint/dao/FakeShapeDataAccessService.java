@@ -1,8 +1,10 @@
 package com.example.Paint.dao;
 
+import com.example.Paint.Service.ShapeFactory;
 import com.example.Paint.Service.ShapePrototype;
 import com.example.Paint.input.ShapeData;
-import com.example.Paint.model.*;
+import com.example.Paint.model.Point;
+import com.example.Paint.model.Shape;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 
@@ -59,13 +61,14 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     public Shape addCopy(int shapeId, int idCloned, float x, float y) { //action added, redo done
         if (!DB.containsKey(shapeId))
             return null;
-        
+
         Shape copiedShape = ShapePrototype.getClone(DB.get(shapeId));
         copiedShape.setStartX(x);
         copiedShape.setStartY(y);
+        copiedShape.setId(idCloned);
         System.out.println(x + " " + y);
-        redo.clear();
-        clearedIdsRedo.clear();
+        //redo.clear();
+        //clearedIdsRedo.clear();
         return addShape(copiedShape);
     }
 
@@ -114,6 +117,10 @@ public class FakeShapeDataAccessService implements ShapeDAO {
 
     @Override
     public Map<Integer, Shape> undo() {
+        for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+            //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
+        }
         if (undo.isEmpty())
             return DB;
         action = new Point(undo.peek().getKey(), undo.peek().getShape());
@@ -144,6 +151,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             Point index = this.containsKey(action.getKey());
             if (index != null) { //shape found means it was updated
                 DB.replace(action.getKey(), index.getShape());
+                System.out.println("updateOne UNDO");
             } else {
                 DB.remove(action.getKey());
                 System.out.println("deleteOne UNDO");
@@ -173,14 +181,21 @@ public class FakeShapeDataAccessService implements ShapeDAO {
 
     private Point containsKey(int id) {
         for (int i = undo.size() - 1; i >= 0; i--) {
-            if (id == undo.get(i).getKey() && undo.get(i).getShape() != null)
-                return new Point(undo.get(i).getKey(), undo.get(i).getShape());
+            if (id == undo.get(i).getKey() && undo.get(i).getShape() != null) {
+                System.out.println(i + undo.get(i).getKey());
+                return undo.get(i);
+            }
         }
+        System.out.println("null");
         return null;
     }
 
     @Override
     public Map<Integer, Shape> redo() {
+        for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+            //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
+        }
         if (redo.isEmpty())
             return DB;
         action = new Point(redo.peek().getKey(), redo.peek().getShape());
@@ -208,16 +223,17 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             //undo.add(new Point(action.getKey(), null));
             System.out.println("deleteOne redo");
         } else if (action.getKey() > 0 && action.getShape() != null) { //either add or modify
-            //Point index = this.containsKey(action.getKey());
-            DB.put(action.getKey(), action.getShape());
+            Point index = this.containsKey(action.getKey());
+            // assert index != null;
+            //System.out.println(index.getKey());
+            //DB.put(action.getKey(), action.getShape());
             System.out.println("add or modify redo");
-
-            /*if (index != null) { //shape found means it was updated
-                DB.replace(action.getKey(), index.getShape());
+            if (index == null) { //shape found means it was updated
+                DB.replace(action.getKey(), action.getShape());
+                System.out.println("modify redo");
             } else {
-                assert false;
-                DB.put(index.getKey(), index.getShape());
-            }*/
+                DB.put(action.getKey(), action.getShape());
+            }
         }
     }
 
@@ -247,7 +263,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             }
         } else {
             try {
-                
+
                 FileOutputStream fos = new FileOutputStream(filePath.concat(extension));
                 //ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 XMLEncoder xmlEncoder = new XMLEncoder(fos);
@@ -268,7 +284,7 @@ public class FakeShapeDataAccessService implements ShapeDAO {
         util.loadFile();
         String filePath = util.getFilePath();
         String extension = util.getExtension();
-        if (filePath == null) new Gson().toJson(DB);
+        if (filePath == null) return new Gson().toJson(DB);
         if (extension.equals(".json")) {
             try {
                 // create Gson instance
@@ -297,6 +313,10 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 FileInputStream fis = new FileInputStream(filePath);
                 XMLDecoder decoder = new XMLDecoder(fis);
                 DB = (Map<Integer, Shape>) decoder.readObject();
+                for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
+                    System.out.println(entry.getKey() + "=" + entry.getValue());
+                    //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
+                }
                 decoder.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -306,12 +326,13 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     }
 
     private Shape setAttributes(Shape shape, ShapeData shapeData) {
-        shape.setStartX(shapeData.x);
+        /*shape.setStartX(shapeData.x);
         shape.setStartY(shapeData.y);
         shape.setFill(shapeData.fill);
         shape.setRotation(shapeData.rotation);
         shape.setStroke(shapeData.stroke);
         shape.setStrokeWidth(shapeData.strokeWidth);
+        shape.setScaleX(shapeData.scaleX);
         String type = shape.getType().toLowerCase();
         switch (type) {
             case "circle":
@@ -335,8 +356,9 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 ((Line) shape).setEndX(shapeData.endX);
                 ((Line) shape).setEndY(shapeData.endY);
                 break;
-        }
-        undo.add(new Point(shape.getId(), shape));
+        }*/
+        Shape updatedShape = ShapeFactory.getShape(shapeData);
+        undo.add(new Point(shape.getId(), updatedShape));
         return shape;
     }
 }
