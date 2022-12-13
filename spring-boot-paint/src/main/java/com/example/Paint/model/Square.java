@@ -12,6 +12,9 @@ public class Square extends Shape {
 
     }
 
+    public Square() {}
+
+
     public float getLength() {
         return length;
     }

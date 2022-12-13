@@ -13,6 +13,8 @@ public class Rectangle extends Shape {
         this.cornerRadius = cornerRadius;
     }
 
+    public Rectangle() {}
+
     public float getLength() {
         return length;
     }

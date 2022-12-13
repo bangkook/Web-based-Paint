@@ -11,6 +11,8 @@ public class Line extends Shape {
         this.endY = endY;
     }
 
+    public Line() {}
+
     public float getEndX() {
         return endX;
     }
