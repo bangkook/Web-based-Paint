@@ -1,0 +1,186 @@
+<div class="body">
+
+    <section class="saving">
+        <ul>
+            <li class="option tool">
+                <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" class="option tool" id="ClearAll" width="30" height="30">
+                <div class="dropdown-content">
+                    <a>Clear all</a>
+                </div>
+            </li>
+            <li class="option tool">
+                <img src="https://cdn-icons-png.flaticon.com/512/8317/8317116.png" class="option tool" id="save" width="30" height="30">
+                <div class="dropdown-content">
+                    <a>Save as</a>
+                </div>
+            </li>
+            <li class="option tool">
+                <img src="https://cdn-icons-png.flaticon.com/512/3580/3580104.png" class="option tool" id="saveimage" width="30" height="30">
+                <div class="dropdown-content">
+                    <a>Save Image</a>
+                </div>
+            </li>
+            
+            <li class="option tool">
+                <img src="https://cdn-icons-png.flaticon.com/512/9121/9121371.png" class="option tool" id="load" width="30" height="30">
+                <div class="dropdown-content">
+                    <a>Load</a>
+                </div>
+            </li>
+            
+            <li class="option tool" id="undo">
+                <img src="https://cdn-icons-png.flaticon.com/512/8899/8899101.png" class="option tool" width="30" height="30">
+                <div class="dropdown-content">
+                    <a>Undo</a>
+                </div>
+            </li>
+            <li class="option tool" id="redo">
+                <img src="https://cdn-icons-png.flaticon.com/512/8899/8899079.png" class="option tool" width="30" height="30">
+                <div class="dropdown-content">
+                    <a>Redo</a>
+                </div>
+            </li>
+            <li class="option tool" id="mouse">
+                <img src="https://cdn-icons-png.flaticon.com/512/1536/1536577.png" width="30" height="30" alt="">
+                <div class="dropdown-content">
+                    <a>Mouse</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="shapes">
+        <ul class="options">
+            <li class="option tool" id="fill">
+                <img src="https://cdn-icons-png.flaticon.com/512/3285/3285816.png" width="30" height="30" style="position: relative;">
+                <label for="fill" style="position: relative; left:6px">Fill</label>
+                <div class="rightdropdown-content">
+                    <a>Fill shape or background</a>
+                </div>
+            </li>
+            <li class="option tool" id="Rectangle">
+                <img src="https://cdn-icons-png.flaticon.com/512/3305/3305372.png" width="30" height="30" >
+                <div class="rightdropdown-content">
+                    <a>Rectangle</a>
+                </div>
+            </li>
+            <li class="option tool" id="Circle">
+                <img src="https://cdn-icons-png.flaticon.com/512/481/481078.png" width="30" height="30">
+                <div class="rightdropdown-content">
+                    <a>Circle</a>
+                </div>
+            </li>
+            <li class="option tool" id="Triangle">
+                <img src="https://cdn-icons-png.flaticon.com/512/649/649738.png" width="30" height="30">
+                <div class="rightdropdown-content">
+                    <a>Triangle</a>
+                </div>
+            </li>
+            <li class="option tool" id="Ellipse">
+                <img src="https://cdn-icons-png.flaticon.com/512/2708/2708504.png" width="30" height="30">
+                <div class="rightdropdown-content">
+                    <a>Ellipse</a>
+                </div>
+            </li>
+            <li class="option tool" id="Square">
+                <img src="https://cdn-icons-png.flaticon.com/512/2627/2627937.png" width="30" height="30">
+                <div class="rightdropdown-content">
+                    <a>Square</a>
+                </div>
+            </li>
+            <li class="option tool" id="Line">
+                <img src="https://cdn-icons-png.flaticon.com/512/8095/8095937.png" width="30" height="30">
+                <div class="rightdropdown-content">
+                    <a>Line</a>
+                </div>
+            </li>
+
+        </ul>
+    </section>
+
+
+    <section class="tools">
+        <ul>
+            <li class="option tool" id="brush">
+                <img src="https://cdn-icons-png.flaticon.com/512/1998/1998294.png" width="30" height="30" style="position: relative; left:5px">
+                <div class="dropdown-content">
+                    <a>Brush</a>
+                </div>
+            </li>
+            <li class="option tool" id="eraser">
+                <img src="https://cdn-icons-png.flaticon.com/128/3277/3277337.png" width="30" height="30" style="position: relative; left:15px">
+                <div class="dropdown-content">
+                    <a>Eraser</a>
+                </div>
+            </li>
+            <div class="option">
+                <input type="range" id="size-slider" min="1" max="30" value="5">
+            </div>
+        </ul>
+    </section>
+
+
+    <section class="row colors">
+        <ul class="options">
+            <li class="option" id="color"></li>
+            <li class="option " id="color"></li>
+            <li class="option" id="color"></li>
+            <li class="option" id="color"></li>
+            <li class="option " id="color"></li>
+            <li class="option" id="color"></li>
+            <input type="color" id="color-picker" value="" style="position: relative; left: 20px; top:15px">
+        </ul>
+    </section>
+    <section class="textbox">
+        <div class="option" id="text" style="position: relative; left: 20px; top:15px">{{text}}</div>
+    </section>
+
+    <section class="image">
+        <ul>
+            <li class="option tool" id="mirror">
+                <img src="https://cdn-icons-png.flaticon.com/512/8198/8198406.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Mirror</a>
+                </div>
+            </li>
+            <li class="option tool" id="rotate">
+                <img src="https://cdn-icons-png.flaticon.com/512/1302/1302088.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Rotate</a>
+                </div>
+            </li>
+            <li class="option tool" id="resize">
+                <img src="https://cdn-icons-png.flaticon.com/512/1141/1141917.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Resize</a>
+                </div>
+            </li>
+            <li class="option tool" id="move">
+                <img src="https://cdn-icons-png.flaticon.com/512/1481/1481155.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Move</a>
+                </div>
+            </li>
+            <li class="option tool" id="delete">
+                <img src="https://cdn-icons-png.flaticon.com/512/3221/3221897.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Delete</a>
+                </div>
+            </li>
+            <li class="option tool" id="copy">
+                <img src="https://cdn-icons-png.flaticon.com/512/2356/2356708.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Copy</a>
+                </div>
+            </li>
+            <li class="option tool" id="paste">
+                <img src="https://cdn-icons-png.flaticon.com/512/3388/3388677.png" width="30" height="30" />
+                <div class="leftdropdown-content">
+                    <a>Paste</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <div id="drawing-board" class="draw">
+    </div>
+</div>
