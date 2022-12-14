@@ -26,6 +26,7 @@ public class ShapePrototype {
 
             case "rectangle":
                 return (Rectangle) shape.clone();
+                
             case "freehand":
                 return (Pen) shape.clone();
         }

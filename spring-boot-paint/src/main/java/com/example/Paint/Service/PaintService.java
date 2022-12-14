@@ -14,12 +14,9 @@ public class PaintService {
     @Autowired
     private final ShapeDAO shapeDAO;
 
-//    @Autowired
-//    private final ActionsData actionsData;
 
     public PaintService(ShapeDAO shapeDAO) {
         this.shapeDAO = shapeDAO;
-//        this.actionsData = actionsData;
     }
 
     public Map<Integer, Shape> getAllShapes() {

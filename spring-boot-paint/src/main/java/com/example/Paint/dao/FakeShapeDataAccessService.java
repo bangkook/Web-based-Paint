@@ -200,7 +200,6 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             return DB;
         action = new Point(redo.peek().getKey(), redo.peek().getShape());
         redo.pop();
-        undo.push(action);
         System.out.println("redo");
         this.formAllShapesOnRedo(action);
         return DB;
@@ -228,13 +227,14 @@ public class FakeShapeDataAccessService implements ShapeDAO {
             //System.out.println(index.getKey());
             //DB.put(action.getKey(), action.getShape());
             System.out.println("add or modify redo");
-            if (index == null) { //shape found means it was updated
+            if (index != null) { //shape found means it was updated
                 DB.replace(action.getKey(), action.getShape());
                 System.out.println("modify redo");
             } else {
                 DB.put(action.getKey(), action.getShape());
             }
         }
+        undo.push(action);
     }
 
     @Override
@@ -299,7 +299,6 @@ public class FakeShapeDataAccessService implements ShapeDAO {
                 // print map entries
                 for (Map.Entry<Integer, Shape> entry : DB.entrySet()) {
                     System.out.println(entry.getKey() + "=" + entry.getValue());
-                    //DB.put(Integer.valueOf(entry.getKey()), entry.getValue());
                 }
 
                 // close reader
@@ -326,37 +325,6 @@ public class FakeShapeDataAccessService implements ShapeDAO {
     }
 
     private Shape setAttributes(Shape shape, ShapeData shapeData) {
-        /*shape.setStartX(shapeData.x);
-        shape.setStartY(shapeData.y);
-        shape.setFill(shapeData.fill);
-        shape.setRotation(shapeData.rotation);
-        shape.setStroke(shapeData.stroke);
-        shape.setStrokeWidth(shapeData.strokeWidth);
-        shape.setScaleX(shapeData.scaleX);
-        String type = shape.getType().toLowerCase();
-        switch (type) {
-            case "circle":
-                ((Circle) shape).setRadius(shapeData.radius);
-                break;
-            case "ellipse":
-                ((Ellipse) shape).setHeight(shapeData.height);
-                ((Ellipse) shape).setWidth(shapeData.width);
-                break;
-            case "triangle":
-                ((Triangle) shape).setRadius(shapeData.radius);
-                break;
-            case "rectangle":
-                ((Rectangle) shape).setLength(shapeData.length);
-                ((Rectangle) shape).setWidth(shapeData.width);
-                break;
-            case "square":
-                ((Square) shape).setLength(shapeData.length);
-                break;
-            case "line":
-                ((Line) shape).setEndX(shapeData.endX);
-                ((Line) shape).setEndY(shapeData.endY);
-                break;
-        }*/
         Shape updatedShape = ShapeFactory.getShape(shapeData);
         undo.add(new Point(shape.getId(), updatedShape));
         return shape;

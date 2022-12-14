@@ -10,7 +10,6 @@ com\example\Paint\model\Shape.class
 com\example\Paint\Service\PaintService.class
 com\example\Paint\Service\ShapePrototype.class
 com\example\Paint\dao\FakeShapeDataAccessService.class
-com\example\Paint\model\test.class
 com\example\Paint\Controller\PaintController.class
 com\example\Paint\PaintApplication.class
 com\example\Paint\model\Triangle.class

@@ -11,7 +11,6 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin("http://localhost:4200/")
-//@RequestMapping("/paint")
 public class PaintController {
     @Autowired
     private final PaintService paintService;
@@ -32,10 +31,10 @@ public class PaintController {
 
     @GetMapping(value = "/copy/{shapeId}/{idCloned}/{x}/{y}", produces = {"application/json"})
     public Shape addCopy(@PathVariable("shapeId") int shapeId,
-    					 @PathVariable("idCloned") int idCloned,
-    					 @PathVariable("x") float x,
-    					 @PathVariable("y") float y) {
-    	
+                         @PathVariable("idCloned") int idCloned,
+                         @PathVariable("x") float x,
+                         @PathVariable("y") float y) {
+
         return this.paintService.addCopy(shapeId, idCloned, x, y);
     }
 
