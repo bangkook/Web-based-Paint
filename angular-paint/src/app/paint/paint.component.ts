@@ -597,6 +597,20 @@ mouse(){
         fill:this.copiedShape.shapeAttr.fill,
       });
     
+      this.stage.on("mousemove", () => {
+        if(this.selectedTool === "paste"){
+          this.move = true;
+          this.trans = false
+          if(!this.isdraw) { return; }
+          this.xx = this.stage?.getRelativePointerPosition()?.x;
+          this.yy = this.stage?.getRelativePointerPosition()?.y;
+          this.konva.setAttrs({
+            x: this.xx,
+            y: this.yy,
+          });
+          this.layer.add(this.konva).batchDraw();
+        }}
+      );
 
       this.stage.on("mouseup", () => {
         if(this.selectedTool === "paste"){
@@ -606,8 +620,8 @@ mouse(){
             this.shapes.set(clonedShapeBuilder.getShape().getId() ,clonedShapeBuilder.getShape());
             console.log(this.copiedShape.getId(), clonedShapeBuilder.getShape().getId());
             this.paintService.copyShape(this.copiedShape.getId(), clonedShapeBuilder.getShape().getId(), this.konva.x(), this.konva.y()).subscribe();
+            //this.layer.add(this.konva).batchDraw();
           }
-          this.konva=null;
           console.log("pasted!");
         }}
       );
@@ -711,7 +725,7 @@ mouse(){
   moveing() {
     this.stage.on('mousemove touchmove',  (e:any) => {
       if(this.selectedTool==="move") {
-        if (e.target != this.stage&& e.target.name()!="pen") {
+        if (e.target != this.stage&& e.target.name()!="pen" ) {
           e.target.to({
             draggable:true,
           });
@@ -722,7 +736,7 @@ mouse(){
       }
     });
     this.stage.on('mouseup', (e:any) => {
-      if (e.target != this.stage&& e.target.name()!="pen"&&this.selectedTool==="move") {
+      if (e.target != this.stage&& e.target.name()!="pen"&&this.selectedTool==="move" ) {
         this.shapes.set(e.target._id, this.update.update(e.target, this.paintService));
       }
     })
@@ -804,6 +818,7 @@ mouse(){
 
   saveImage() {
     function downloadURI(uri:any, name:any) {
+ 
       var link = document.createElement('a');
       link.download = name;
       link.href = uri;
@@ -814,10 +829,10 @@ mouse(){
     }
     var dataURL = this.stage.toDataURL({});
     downloadURI(dataURL, 'stage.png');
-    this.paintService.save().subscribe();
   }
 
-  save() { this.paintService.save().subscribe(); }
+  save() {
+     this.paintService.save().subscribe(); }
 
   load() {
 
@@ -935,6 +950,7 @@ mouse(){
           console.log(e.target)
           e.target.setAttrs({
             scaleX: -e.target.scaleX(),
+            fill:this.selectedColor,
           });
           let shape = this.convert.konvaToShape(e.target as Shape<ShapeConfig>);
           this.shapes.set(e.target._id, shape);
