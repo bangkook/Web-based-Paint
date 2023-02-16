@@ -5,12 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PaintComponent } from './paint/paint.component';
-import { PaintService } from './paint/services/HttpService';
-import { Update } from './paint/services/UpdateService';
-import { ConversionService } from './paint/services/conversion.service';
-import { ShapeDataService } from './paint/services/ShapeDataService';
-
-
+import { DrawingService } from './services/DrawingService';
+import { PaintService } from './services/HttpService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +17,7 @@ import { ShapeDataService } from './paint/services/ShapeDataService';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [PaintService, Update, ShapeDataService, ConversionService],
+  providers: [PaintService, DrawingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

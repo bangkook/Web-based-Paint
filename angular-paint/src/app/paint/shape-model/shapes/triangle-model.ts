@@ -1,21 +1,34 @@
+import Konva from "konva";
 import { ShapeAttr } from "../shape-attributes";
 import { AbstractShape } from "../shape-model";
+import { ShapeData } from "./ShapeData";
 
 export class Triangle extends AbstractShape {
     private radius: number;
-    private cornerRadius: number;
 
-    constructor(id: number, shapeAttr: ShapeAttr, radius: number, cornerRadius: number) {
+    constructor(id: number, shapeAttr: ShapeAttr, radius: number) {
       super(id, "triangle", shapeAttr);
       this.radius = radius;
-      this.cornerRadius = cornerRadius;
     }
 
   getRadius() { return this.radius; }
 
   setRadius(radius: number) { this.radius = radius; }
 
-  getCornerRadius(): number { return this.cornerRadius; }
 
-  setCornerRadius(cornerRadius: number): void { this.cornerRadius = cornerRadius; }
+  getShape(shapeData: ShapeData): Konva.Shape{
+    let konva = new Konva.RegularPolygon;
+    return konva.setAttrs({
+        x: shapeData.x,
+        y: shapeData.y,
+        fill: shapeData.fill,
+        radius: shapeData.radius,
+        stroke: shapeData.stroke,
+        strokeWidth: shapeData.strokeWidth,
+        rotation: shapeData.rotation,
+        draggable: false,
+        listening: true,
+        visible: true
+    })
+  }
 }

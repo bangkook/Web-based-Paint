@@ -2,45 +2,45 @@
 
     <section class="saving">
         <ul>
-            <li class="option tool">
+            <li class="option tool" id="clearAll" (click)="clearAll()">
                 <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" class="option tool" id="ClearAll" width="30" height="30">
                 <div class="dropdown-content">
                     <a>Clear all</a>
                 </div>
             </li>
-            <li class="option tool">
+            <li class="option tool" id="saveAs" (click)="save()">
                 <img src="https://cdn-icons-png.flaticon.com/512/8317/8317116.png" class="option tool" id="save" width="30" height="30">
                 <div class="dropdown-content">
                     <a>Save as</a>
                 </div>
             </li>
-            <li class="option tool">
+            <li class="option tool" id="saveImage" (click)="saveImage()">
                 <img src="https://cdn-icons-png.flaticon.com/512/3580/3580104.png" class="option tool" id="saveimage" width="30" height="30">
                 <div class="dropdown-content">
                     <a>Save Image</a>
                 </div>
             </li>
-            
-            <li class="option tool">
+
+            <li class="option tool" id="load" (click)="load()">
                 <img src="https://cdn-icons-png.flaticon.com/512/9121/9121371.png" class="option tool" id="load" width="30" height="30">
                 <div class="dropdown-content">
                     <a>Load</a>
                 </div>
             </li>
-            
-            <li class="option tool" id="undo">
+
+            <li class="option tool" id="undo" (click)="undo()">
                 <img src="https://cdn-icons-png.flaticon.com/512/8899/8899101.png" class="option tool" width="30" height="30">
                 <div class="dropdown-content">
                     <a>Undo</a>
                 </div>
             </li>
-            <li class="option tool" id="redo">
+            <li class="option tool" id="redo" (click)="redo()">
                 <img src="https://cdn-icons-png.flaticon.com/512/8899/8899079.png" class="option tool" width="30" height="30">
                 <div class="dropdown-content">
                     <a>Redo</a>
                 </div>
             </li>
-            <li class="option tool" id="mouse">
+            <li class="option tool" id="mouse" (click)="mouse()">
                 <img src="https://cdn-icons-png.flaticon.com/512/1536/1536577.png" width="30" height="30" alt="">
                 <div class="dropdown-content">
                     <a>Mouse</a>
@@ -58,56 +58,38 @@
                     <a>Fill shape or background</a>
                 </div>
             </li>
-            <li class="option tool" id="Rectangle">
-                <img src="https://cdn-icons-png.flaticon.com/512/3305/3305372.png" width="30" height="30" >
-                <div class="rightdropdown-content">
-                    <a>Rectangle</a>
-                </div>
+            <li class="option tool" id="shape" title="Rectangle" (click)="drawShape('rectangle')">
+                <img src="https://cdn-icons-png.flaticon.com/512/3305/3305372.png" width="30" height="30">
             </li>
-            <li class="option tool" id="Circle">
+            <li class="option tool" id="shape" title="Circle" (click)="drawShape('circle')">
                 <img src="https://cdn-icons-png.flaticon.com/512/481/481078.png" width="30" height="30">
-                <div class="rightdropdown-content">
-                    <a>Circle</a>
-                </div>
             </li>
-            <li class="option tool" id="Triangle">
+            <li class="option tool" id="shape" title="Triangle" (click)="drawShape('triangle')">
                 <img src="https://cdn-icons-png.flaticon.com/512/649/649738.png" width="30" height="30">
-                <div class="rightdropdown-content">
-                    <a>Triangle</a>
-                </div>
             </li>
-            <li class="option tool" id="Ellipse">
+            <li class="option tool" id="shape" title="Ellipse" (click)="drawShape('ellipse')">
                 <img src="https://cdn-icons-png.flaticon.com/512/2708/2708504.png" width="30" height="30">
-                <div class="rightdropdown-content">
-                    <a>Ellipse</a>
-                </div>
-            </li>
-            <li class="option tool" id="Square">
-                <img src="https://cdn-icons-png.flaticon.com/512/2627/2627937.png" width="30" height="30">
-                <div class="rightdropdown-content">
-                    <a>Square</a>
-                </div>
-            </li>
-            <li class="option tool" id="Line">
-                <img src="https://cdn-icons-png.flaticon.com/512/8095/8095937.png" width="30" height="30">
-                <div class="rightdropdown-content">
-                    <a>Line</a>
-                </div>
-            </li>
 
+            </li>
+            <li class="option tool" id="shape" title="Square" (click)="drawShape('square')">
+                <img src="https://cdn-icons-png.flaticon.com/512/2627/2627937.png" width="30" height="30">
+            </li>
+            <li class="option tool" id="Line" title="Line" (click)="drawShape('line')">
+                <img src="https://cdn-icons-png.flaticon.com/512/8095/8095937.png" width="30" height="30">
+            </li>
         </ul>
     </section>
 
 
     <section class="tools">
         <ul>
-            <li class="option tool" id="brush">
+            <li class="option tool" id="brush" (click)="freehand()">
                 <img src="https://cdn-icons-png.flaticon.com/512/1998/1998294.png" width="30" height="30" style="position: relative; left:5px">
                 <div class="dropdown-content">
                     <a>Brush</a>
                 </div>
             </li>
-            <li class="option tool" id="eraser">
+            <li class="option tool" id="eraser" (click)="delete()">
                 <img src="https://cdn-icons-png.flaticon.com/128/3277/3277337.png" width="30" height="30" style="position: relative; left:15px">
                 <div class="dropdown-content">
                     <a>Eraser</a>
@@ -137,43 +119,43 @@
 
     <section class="image">
         <ul>
-            <li class="option tool" id="mirror">
+            <li class="option tool" id="mirror" (click)="mirror()">
                 <img src="https://cdn-icons-png.flaticon.com/512/8198/8198406.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Mirror</a>
                 </div>
             </li>
-            <li class="option tool" id="rotate">
+            <li class="option tool" id="rotate" (click)="rotate()">
                 <img src="https://cdn-icons-png.flaticon.com/512/1302/1302088.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Rotate</a>
                 </div>
             </li>
-            <li class="option tool" id="resize">
+            <li class="option tool" id="resize" (click)="resize()">
                 <img src="https://cdn-icons-png.flaticon.com/512/1141/1141917.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Resize</a>
                 </div>
             </li>
-            <li class="option tool" id="move">
+            <li class="option tool" id="move" (click)="move()">
                 <img src="https://cdn-icons-png.flaticon.com/512/1481/1481155.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Move</a>
                 </div>
             </li>
-            <li class="option tool" id="delete">
+            <li class="option tool" id="delete" (click)="delete()">
                 <img src="https://cdn-icons-png.flaticon.com/512/3221/3221897.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Delete</a>
                 </div>
             </li>
-            <li class="option tool" id="copy">
+            <li class="option tool" id="copy" (click)="copy()">
                 <img src="https://cdn-icons-png.flaticon.com/512/2356/2356708.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Copy</a>
                 </div>
             </li>
-            <li class="option tool" id="paste">
+            <li class="option tool" id="paste" (click)="paste()">
                 <img src="https://cdn-icons-png.flaticon.com/512/3388/3388677.png" width="30" height="30" />
                 <div class="leftdropdown-content">
                     <a>Paste</a>

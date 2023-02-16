@@ -1,8 +1,9 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AbstractShape } from '../shape-model/shape-model';
-import { ShapeDataService } from './ShapeDataService';
+import { AbstractShape } from '../paint/shape-model/shape-model';
+import { ShapeData } from '../paint/shape-model/shapes/ShapeData';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,10 +19,10 @@ export class PaintService{
         this.paintUrl = 'http://localhost:8080/';
     }
 
-    public addNewShape(shape : ShapeDataService){ //done
+    public addNewShape(shapeData: ShapeData){ //done
       console.log("Sending request...");
-      console.log(shape);
-      return this.http.post<AbstractShape>(this.paintUrl + "add", shape, httpOptions);
+      console.log(shapeData);
+      return this.http.post<ShapeData>(this.paintUrl + "add", shapeData, httpOptions);
     }
 
     public getAllShapes(){
@@ -34,10 +35,9 @@ export class PaintService{
       return this.http.get<void>(this.paintUrl + 'copy/' + shapeId + '/' + cloneId + '/' + x + '/' + y, httpOptions);
     }
 
-    public updateShape(id: number, ShapeData : ShapeDataService) { //done
+    public updateShape(id: number, shapeData: ShapeData) { //done
       console.log("updating..");
-      //console.log()
-      return this.http.put<AbstractShape>(this.paintUrl + 'update/' + id, ShapeData, httpOptions);
+      return this.http.put<ShapeData>(this.paintUrl + 'update/' + id, shapeData, httpOptions);
     }
 
     public deleteShape(id : number) {

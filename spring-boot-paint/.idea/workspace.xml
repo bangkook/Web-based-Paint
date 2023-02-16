@@ -5,29 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b0f9825-8430-480a-8b32-124e29aa2260" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/paint.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/paint.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/paint.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/paint.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/services/HttpService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/services/ShapeDataService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/services/UpdateService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/services/conversion.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/konva-factory/KonvaFactory.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/builder/IBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/builder/ShapeBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/CircleBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/EllipseBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/FreeHandBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/LineBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/RectangleBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/SquareBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-builder/shapes-builder/TriangleBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-copy/CloneManager.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-generator/shape-factory/ShapeFactory.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shape-attributes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shape-attributes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shape-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shape-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/circle-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/circle-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/ellipse-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/ellipse-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/line-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/line-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/pen-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/pen-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/point-model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/rectangle-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/rectangle-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/square-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/square-model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/triangle-model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular-paint/src/app/paint/shape-model/shapes/triangle-model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Paint/Service/ShapeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Paint/Service/ShapeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Paint/Service/ShapePrototype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Paint/Service/ShapePrototype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Paint/input/ShapeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Paint/input/ShapeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Paint/model/Pen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Paint/model/Pen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/Controller/PaintController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/Controller/PaintController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/PaintApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/PaintApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/Service/PaintService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/Service/PaintService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/Service/ShapeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/Service/ShapeFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/Service/ShapePrototype.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/Service/ShapePrototype.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/dao/FakeShapeDataAccessService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/dao/FakeShapeDataAccessService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/dao/ShapeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/dao/ShapeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/input/ShapeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/input/ShapeData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Circle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Circle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Ellipse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Ellipse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Line.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Rectangle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Shape.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/ShapeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/ShapeType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Paint/model/Triangle.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,21 +78,12 @@
     <option name="showModules" value="false" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "D:/OOP_Modification/Producer-Consumer-Simulation-Program/backend"
+  }
+}]]></component>
   <component name="RunManager" selected="Application.PaintApplication">
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PaintApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -143,6 +143,15 @@
         </option>
       </MavenSettings>
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.PaintApplication" />

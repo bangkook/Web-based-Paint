@@ -8,14 +8,14 @@ export class ShapeAttr {
     private rotation: number;
     private scaleX: number;
 
-    constructor() {
-      this.startX = 0;
-      this.startY = 0;
-      this.stroke = 'white';
-      this.strokeWidth = 0;
-      this.fill = 'rgb(0, 0, 0, 0)';
-      this.rotation = 0;
-      this.scaleX = 1;
+    constructor(startX: number, startY: number, stroke: string, strokeWidth: number, fill: string, rotation: number, scaleX: number) {
+      this.startX = startX;
+      this.startY = startY;
+      this.stroke = stroke;
+      this.strokeWidth = strokeWidth;
+      this.fill = fill;
+      this.rotation = rotation;
+      this.scaleX = scaleX;
     }
 
     setAttrs(startX: number, startY: number, scaleX: number, stroke: string,

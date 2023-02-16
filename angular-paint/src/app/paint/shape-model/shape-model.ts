@@ -21,7 +21,7 @@ export abstract class AbstractShape {
     setId(id: number): void { this.id = id; }
 
     setType(type: string): void { this.type = type; }
-    
+
     getShapeAttr(): ShapeAttr { return this.shapeAttr; }
 
     setShapeAttr(shapeAttr: ShapeAttr): void { this.shapeAttr = shapeAttr; }
